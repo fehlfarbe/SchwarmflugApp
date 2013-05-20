@@ -1,0 +1,179 @@
+Anergates atratulus	Myrmicinae	Tetramoriini	(Schenck, 1852) 	AT, CH, DE	MV, NS, SA, Br, NRW, He, Th, Sa	2	4.000 produzierte Geschlechtstiere (*)
+Aphaenogaster gibbosa	Myrmicinae	Pheidolini	(Latreille, 1798) 	CH	-	-	
+Aphaenogaster italica	Myrmicinae	Pheidolini	(Latreille, 1798) 	CH	-	-	
+Aphaenogaster subterranea	Myrmicinae	Pheidolini	(Latreille, 1798) 	AT, CH, DE	NS, SA, NW, He, Th, Sa, RP, BW, By	2	Bis einige tausend Arbeiterinnen
+Bothriomyrmex gallicus	Dolichoderinae	Iridomyrmecini	Emery, 1925 	CH	-	-	
+Bothriomyrmex gibbus	Dolichoderinae	Iridomyrmecini	Soudek, 1924 	AT	-	-	
+Bothriomyrmex menozzii	Dolichoderinae	Iridomyrmecini	Emery, 1925 	AT, CH	-	-	
+Bothriomyrmex meridionalis	Dolichoderinae	Iridomyrmecini	(Roger, 1863) 	FR	-	-	
+Camponotus aethiops	Formicinae	Camponotini	(Latreille, 1798) 	AT, CH, DE	RP, BW	1	
+Camponotus atricolor (?)	Formicinae	Camponotini	(Nylander, 1849) 	AT	-	-	
+Camponotus dalmaticus	Formicinae	Camponotini	(Nylander, 1849) 	CH	-	-	
+Camponotus fallax	Formicinae	Camponotini	(Nylander, 1856) 	AT, CH, DE	NS, SA, Br, He, Sa, RP, BW, By	V	100 - 250; vermutlich 1 Gyne
+Camponotus herculeanus	Formicinae	Camponotini	(Linnaeus, 1758) 	AT, CH, DE	(SH), (MV), NS, SA, Br, NW, He, Th, Sa, RP, BW, By	-	5.000 - 13.000 (?)
+Camponotus lateralis	Formicinae	Camponotini	(Olivier, 1792) 	CH	-	-	Meist <500; 1 oder mehrere Gynen (räumlich getrennt)
+Camponotus ligniperda	Formicinae	Camponotini	(Latreille, 1802) 	AT, CH, DE	Deutschlandweit	-	
+Camponotus piceus	Formicinae	Camponotini	(Leach, 1825) 	AT, CH, DE	He, Th, RP, BW, By	2	
+Camponotus truncatus	Formicinae	Camponotini	(Spinola, 1808) 	AT, CH, DE	He, Th, RP, BW, By	V	Selten >500; 1 Gyne
+Camponotus vagus	Formicinae	Camponotini	(Scopoli, 1763) 	AT, CH, DE	He, RP, BW, By	1	1.000 - 4.000, max. 10.000; 1 Gyne
+Camponotus universitatis	Formicinae	Camponotini	Forel, 1890 	CH	-	-	
+Cardiocondyla elegans	Myrmicinae	Formicoxenini	Emery, 1869 	HU	-	-	
+Cataglyphis aenescens	Formicinae	Formicini	(Nylander, 1849) 	HU	-	-	
+Cataglyphis nodus	Formicinae	Formicini	(Brulle, 1832) 	HU, SK	-	-	
+Chalepoxenus muellerianus	Myrmicinae	Formicoxenini	Finzi, 1921 	CH	-	-	
+Crematogaster schmidti	Myrmicinae	Crematogastrini	(Mayr, 1853) 	HU	-	-	
+Crematogaster scutellaris	Myrmicinae	Crematogastrini	(Olivier, 1791) 	AT, CH, DE	NW, BW	-	Mehrere tausend Arbeiterinnen (?)
+Crematogaster sordidula	Myrmicinae	Crematogastrini	(Nylander, 1849) 	CH, DE	BW	0	
+Cryptopone ochraceum	Ponerinae	Ponerini	(Mayr, 1855) 	CH	-	-	
+Dolichoderus quadripunctatus	Dolichoderinae	Dolichoderini	(Linnaeus, 1771) 	AT, CH, DE	SH, SA, Br, NW, He, Th, Sa, RP, BW, By	3	Meist <300; 1 Gyne
+Formica aquilonia	Formicinae	Formicini	Yarrow, 1955 	AT, CH, DE	BY	-	
+Formica bruni	Formicinae	Formicini	Kutter, 1967 	AT, CH, DE	RP, BW	1	S-Nest meist 3.500; 24 Gynen / ÜW-Nest 49.390; 202 Gynen
+Formica cinerea	Formicinae	Formicini	Mayr, 1853 	AT, CH, DE	SH, MV, NS, SA, Br, (NW), Th, Sa, (RP), BW, By	V	
+Formica clara	Formicinae	Formicini	Forel, 1886 	AT, CH, DE	MV, NS, SA, Br, NW, He, Th, Sa, RP, BW, By	V	
+Formica cunicularia	Formicinae	Formicini	Latreille, 1798 	AT, CH, DE	Deutschlandweit	-	Meist 1.000-1.800, manchmal mehrere Gynen
+Formica exsecta	Formicinae	Formicini	Nylander, 1846 	AT, CH, DE	SH, MV, NS, SA, Br, NW, He, Th, Sa, RP, BW, By	3	
+Formica fennica	Formicinae	Formicini	Seifert, 2000 	FI	-	-	
+Formica foreli	Formicinae	Formicini	Bondroit, 1918 	AT, CH, DE	SH, MV, NS, SA, Br, Th, Sa, RP, By	2	
+Formica forsslundi	Formicinae	Formicini	Lohmander, 1949 	CH, DE	SH, By	1	Meist 1.026 +/- 549 (extrem 500-1.783); 1 Gyne
+Formica fusca	Formicinae	Formicini	Linnaeus, 1758 	AT, CH, DE	Deutschlandweit	-	Meist 300-2.000; 1-15 Gynen
+Formica fuscocinerea	Formicinae	Formicini	Forel, 1874 	AT, CH, DE	(BW), By	V	
+Formica gagates	Formicinae	Formicini	Latreille, 1798 	AT, CH	-	-	
+Formica gagatoides	Formicinae	Formicini	Ruzsky, 1904 	FI, NO, SE	-	-	
+Formica lemani	Formicinae	Formicini	Bondroit, 1917 	AT, CH, DE	NS, SA, NW, He, Th, Sa, RP, BW, By	-	Ähnlich Formica fusca (?)
+Formica lugubris	Formicinae	Formicini	Zetterstedt, 1838 	AT, CH, DE	RP, BW, By	-	Große Völker 1.200.000; 400 Gynen
+Formica paralugubris	Formicinae	Formicini	Seifert, 1996 	AT, CH	-	-	Meist 1.00-1.000 Gynen; Rekord: Superkolonie (70ha)
+Formica picea	Formicinae	Formicini	Nylander, 1846 	AT, CH, DE	Deutschlandweit	2	Meist 500-800 (extrem >10.000), 1-15 Gynen
+Formica polyctena	Formicinae	Formicini	Förster, 1850 	AT, CH, DE	Deutschlandweit	-	Größtes Nest: Mind. 15-16 Mio.; 20.000 Gynen
+Formica pratensis	Formicinae	Formicini	Retzius, 1783 	AT, CH, DE	Deutschlandweit	V	
+Formica pressilabris	Formicinae	Formicini	Nylander, 1846 	AT, CH, DE	MV, Br	1	
+Formica rufa	Formicinae	Formicini	Linnaeus, 1761 	AT, CH, DE	Deutschlandweit	-	Nie >= Formica polyctena
+Formica rufibarbis	Formicinae	Formicini	Fabricius, 1793 	AT, CH, DE	Deutschlandweit	-	Tendenziell > als Formica cunicularia
+Formica sanguinea	Formicinae	Formicini	Latreille, 1798 	AT, CH, DE	Deutschlandweit	-	Meist 2.000-7.500, selten >10.000; oft mehrere Gynen
+Formica selysi	Formicinae	Formicini	Bondroit, 1918 	AT, CH, DE	BW, By	V	
+formica selysi							
+Formica suecica	Formicinae	Formicini	Adlerz, 1902 	AT	-	-	
+Formica truncorum	Formicinae	Formicini	Fabricius, 1804 	AT, CH, DE	Deutschlandweit	3	
+Formica uralensis	Formicinae	Formicini	Ruzsky, 1895 	CH, DE	SH, MV, NS, BW	1	Oft >300 Gynen
+Formicoxenus nitidulus	Myrmicinae	Formicoxenini	(Nylander, 1846) 	AT, CH, DE	Deutschlandweit	3	20-150
+Harpagoxenus sublaevis	Myrmicinae	Formicoxenini	(Nylander, 1849) 	AT, CH, DE	(SH), MV, NS, SA, Br, (NW), He, Th, Sa, RP, BW, By	2	50-60 (max. 100) (#)
+Hypoponera eduardi	Ponerinae	Ponerini	(Forel, 1894) 	CH	-	-	
+Hypoponera punctatissima	Ponerinae	Ponerini	(Roger, 1859) 	AT, CH, DE	SH, (MV), NS, SA, Br, (NW), He, Th, Sa, RP, BW, (By)	-	Max. 190; 3 Gynen
+Hypoponera schauinslandi	Ponerinae	Ponerini	(Emery, 1899) 	CH, DE	Br, NW, He, Th, Sa	-	Ähnlich Hypoponera punctatissima
+Lasius alienus	Formicinae	Lasiini	(Förster, 1850) 	AT, CH, DE	MV, NS, SA, Br, NW, He, Th, Sa, RP, BW, By	V	
+Lasius austriacus	Formicinae	Lasiini	Schlick-Steiner, 2003 	AT	-	-	
+Lasius balcanicus	Formicinae	Lasiini	Seifert, 1988 	AT	-	-	
+Lasius bicornis	Formicinae	Lasiini	(Förster, 1850) 	AT, CH, DE	SA, BR, NW, He, Th, Sa, RP, BW	2	
+Lasius brunneus	Formicinae	Lasiini	(Latreille, 1798) 	AT, CH, DE	Deutschlandweit	-	
+Lasius carniolicus	Formicinae	Lasiini	Mayr, 1861 	CH, DE	NS, [RP], [BW]	1	
+Lasius citrinus	Formicinae	Lasiini	Emery, 1922 	AT, CH, DE	NS, He, Th, RP, BW, By	2	
+Lasius distinguendus	Formicinae	Lasiini	(Emery, 1916) 	AT, CH, DE	Th, Sa, RP	R	
+Lasius emarginatus	Formicinae	Lasiini	(Olivier, 1792) 	AT, CH, DE	NS, SA, Br, NW, He, Th, Sa, RP, BW, By	-	
+Lasius flavus	Formicinae	Lasiini	(Fabricius, 1782) 	AT, CH, DE	Deutschlandweit	-	Meist 23.000-100.000; Meist 1-2 Gynen
+Lasius fuliginosus	Formicinae	Lasiini	(Latreille, 1798) 	AT, CH, DE	Deutschlandweit	-	Bist zu 2.000.000 Arbeiterinnen, mehrere Gynen
+Lasius jensi	Formicinae	Lasiini	Seifert, 1982 	AT, CH, DE	NS, SA, He, Th, RP, BW, By	2	
+Lasius meridionalis	Formicinae	Lasiini	(Bondroit, 1920) 	AT, CH, DE	(SH), MV, NS, SA, Br, NW, He, Th, Sa, RP, BW, By	3	
+Lasius mixtus	Formicinae	Lasiini	(Nylander, 1846) 	AT, CH, DE	Deutschlandweit	-	
+Lasius mypops	Formicinae	Lasiini	Forel, 1894 	AT, CH, DE	NS, SA, Br, He, Th, RP, BW, By	2	Ähnlich Lasius flavus (?)
+Lasius neglectus	Formicinae	Lasiini	Van Loon, 1990 	DE	Th, By	-	Rekord: Superkolonie (14ha); 112.000.000; 360.000 Gynen
+Lasius neglectus	Formicinae	Lasiini	Van Loon et al., 1990 	DE	Th, By	-	Rekord: Superkolonie (14ha); 112.000.000; 360.000 Gynen
+Lasius niger	Formicinae	Lasiini	(Linnaeus, 1758) 	AT, CH, DE	Deutschlandweit	-	Meist 14.000 (max. 50.000); 1 Gyne
+Lasius nitidigaster	Formicinae	Lasiini	Seifert, 1996 	AT	-	-	
+Lasius paralienus	Formicinae	Lasiini	Seifert, 1992 	AT, CH, DE	NS, SA, Br, He, Th, Sa, RP, BW, (By)	2	
+Lasius platythorax	Formicinae	Lasiini	Seifert, 1991 	AT, CH, DE	Deutschlandweit	-	
+Lasius psammophilus	Formicinae	Lasiini	Seifert, 1992 	AT, CH, DE	(SH), MV, NS, SA, Br, NW, He, Th, Sa, RP, BW, By	V	
+Lasius reginae	Formicinae	Lasiini	Faber, 1967 	AT, CH, DE	SA, Th	2	
+Lasius sabularum	Formicinae	Lasiini	(Bondroit, 1918) 	AT, CH, DE	NS, (SA), Br, NW, (He), (Th), Sa, RP, BW, By	-	
+Lasius umbratus	Formicinae	Lasiini	(Nylander, 1846) 	AT, CH, DE	Deutschlandweit	-	
+Leptohorax kutteri	Myrmicinae	Formicoxenini	Buschinger, 1965 	AT, CH, DE	By	2	Arbeiterinnenloser Sozialparasit
+Leptothorax acervorum	Myrmicinae	Formicoxenini	(Fabricius, 1793) 	AT, CH, DE	Deutschlandweit	-	Meist 80-200 (auch >1.000); 1-10 Gynen
+Leptothorax goesswaldi	Myrmicinae	Formicoxenini	Kutter, 1967 	CH	-	-	
+Leptothorax gredleri	Myrmicinae	Formicoxenini	Mayr, 1855 	AT, CH, DE	(SH), (MV), (NS), SA, Br, NW, He, Th, Sa, RP, BW, By	V	Meist 40; max. 11 Gynen
+Leptothorax muscorum	Myrmicinae	Formicoxenini	(Nylander, 1846) 	AT, CH, DE	(SH), (MV), NS, SA, Br, NW, He, Th, Sa, RP, BW, By	G	15-225; 1-11 Gynen
+Leptothorax pacis	Myrmicinae	Formicoxenini	(Kutter, 1950) 	AT, CH, DE	By	1	Arbeiterinnenloser Sozialparasit
+Linepithema humile	Dolichoderinae	Dolichoderini	(Mayr, 1868) 	AT, CH, DE	RP	-	Riesige Kolonien, Rekord: Superkolonie über 6.000km
+Liometopum microcephalum	Dolichoderinae	Dolichoderini	(Panzer, 1798) 	AT	-	-	Oft volkreich (bis zu 600m² Grundfläche)
+Manica rubida	Myrmicinae	Myrmicini	(Latreille, 1802) 	AT, CH, DE	NS, SA, Br, (NW), He, Th, Sa, RP, BW, By	V	Mehrere tausend Tiere (?)
+Messor structor	Myrmicinae	Pheidolini	(Latreille, 1798) 	CH, DE (AT - ?)	He, RP, BW	R	
+Messor structor sp. B	Myrmicinae	Pheidolini	(Schlick-Steiner, 2006) 	AT (CH, DE - ?)	-	-	
+Monomorium pharaonis	Myrmicinae	Solenopsidini	(Linnaeus, 1758) 	AT, CH, DE	Deutschlandweit	-	Volkreich; bis zu 2.000 Gynen
+Myrmecina graminicola	Myrmicinae	Myrmecinini	(Latreille, 1802) 	AT, CH, DE	MV, NS, SA, Br, NW, He, Th, Sa, RP, BW, By	V	Meist 40-80
+Myrmica bibikoffi	Myrmicinae	Myrmicini	Kutter, 1963 	CH, DE	NW, Th, BW	D	
+Myrmica gallienii	Myrmicinae	Myrmicini	Bondroit, 1920 	AT, CH, DE	Deutschlandweit	3	Meist 836 (Max. 3.000); 2-3 Gynen (max. 30)
+Myrmica hellenica	Myrmicinae	Myrmicini	Finzi, 1926 	AT, CH, DE	MV, Br, Sa, By	R	Meist 400-1.600; schwach polygyn
+Myrmica hirsuta	Myrmicinae	Myrmicini	Elmes, 1978 	AT, DE	SA, Br, Th, Sa, BW	2	20 Gynen (produzieren 150 Geschlechtstiere/Jahr) (*)
+Myrmica karavajevi	Myrmicinae	Myrmicini	(Arnoldi, 1930) 	AT, CH, DE	He, Sa, RP, BW	2	
+Myrmica lacustris	Myrmicinae	Myrmicini	Ruzsky, 1905 	AT	-	-	
+Myrmica lobicornis	Myrmicinae	Myrmicini	Nylander, 1846 	AT, CH, DE	(SH), MV, NS, SA, Br, NW, He, Th, Sa, RP, BW, By	3	Meist <400; meist 1 Gyne
+Myrmica lobulicornis	Myrmicinae	Myrmicini	Nylander, 1857 	AT, CH, DE	(BW), By	D	
+Myrmica lonae	Myrmicinae	Myrmicini	Finzi, 1926 	AT, CH, DE	(SH), MV, NS, SA, (Br), NW, He, Th, Sa, (RP), BW, By	G	Meist 570 (max. 1.500), 1 Gyne (**)
+Myrmica myrmicoxena	Myrmicinae	Myrmicini	Forel, 1874 	CH	-	-	
+Myrmica rubra	Myrmicinae	Myrmicini	(Linnaeus, 1758) 	AT, CH, DE	Deutschlandweit	-	1.010 (extrem 20.000); 15 Gynen (extrem 600)
+Myrmica ruginodis	Myrmicinae	Myrmicini	Nylander, 1846 	AT, CH, DE	Deutschlandweit	-	
+Myrmica rugulosa	Myrmicinae	Myrmicini	Nylander, 1849 	AT, CH, DE	Deutschlandweit	V	Oft tausende Arbeiterinnen
+Myrmica sabuleti	Myrmicinae	Myrmicini	Meinert, 1861 	AT, CH, DE	Deutschlandweit	V	190-1.500, meist 645; 1-5 Gynen
+Myrmica salina	Myrmicinae	Myrmicini	Ruzsky, 1905 	AT, CH, DE	SA, He, Th, BW, By	2	200-800 Arbeiterinnen, 1 Gyne
+Myrmica scabrnodis	Myrmicinae	Myrmicini	Nylander, 1846 	AT, CH, DE	Deutschlandweit	V	340-1.200, meist 605; 1-5 Gynen
+Myrmica schencki	Myrmicinae	Myrmicini	Viereck, 1903 	AT, CH, DE	Deutschlandweit	3	Meist 354 (max. 930); 1-5 Gynen
+Myrmica specioides	Myrmicinae	Myrmicini	Bondroit, 1918 	AT, CH, DE	SH, MV, NS, SA, Br, NW, He, Th, Sa, RP, BW, (By)	3	Wenige Hundert - 2.500; 1-60 Gynen
+Myrmica sulcinodis	Myrmicinae	Myrmicini	Nylander, 1846 	AT, CH, DE	SH, MV, NS, (SA), He, Th, Sa, (RP), BW, By	2	Meist 300 (max. 3400); 1-2 Gynen (max. 30)
+Myrmica vandeli	Myrmicinae	Myrmicini	Bondroit, 1919 	AT, CH, DE	NS, SA, Br, He, Sa, RP, BW, By	2	
+Myrmoxenus kraussei	Myrmicinae	Formicoxenini	(Emery, 1915) 	IT (?)	-	-	
+Myrmoxenus ravouxi	Myrmicinae	Formicoxenini	(Andre, 1896) 	AT, CH, DE	SA, He, Th, BW, By	1	Meist 33 (Max. 80) + 140 (max. 510) Sklaven; 1 Gyne
+Myrmoxenus stumperi	Myrmicinae	Formicoxenini	(Kutter, 1951) 	AT, CH	-	-	
+Pheidole pallidula	Myrmicinae	Pheidolini	Nylander, 1849 	CH	-	-	
+Plagiolepis ampeloni	Formicinae	Plagiolepidini	(Faber, 1969) 	AT	-	-	
+Plagiolepis pygmaea	Formicinae	Plagiolepidini	(Latreille, 1798) 	AT, CH, DE	BW	2	Meist 5-35 Gynen
+Plagiolepis vindobonensis	Formicinae	Plagiolepidini	Lomnicki, 1925 	AT, CH, DE	SA, He, Th, RP, BW, By	2	
+Plagiolepis xene	Formicinae	Plagiolepidini	Stärcke, 1936 	AT, CH, DE	BW	1	Max. 100 Gynen (*)
+Polyergus rufescens	Formicinae	Formicini	Latreille, 1798 	AT, CH, DE	SH, NS, SA, Br, NW, He, Th, Sa, RP, BW, By	1	40.000 Sklaven pro Sommer (##)
+Ponera coarctata	Ponerinae	Ponerini	(Latreille, 1802) 	AT, CH, DE	MV, NS, SA, Br, NW, He, Th, Sa, RP, BW, By	3	Meist <60, max. 135; 3 Gynen
+Ponera testacea	Ponerinae	Ponerini	Emery, 1895 	AT, CH, DE	SA, Br, He, Th, Sa, RP, BW	2	
+Prenolepis nitens	Formicinae	Plagiolepidini	(Mayr, 1853) 	AT	-	-	
+Proceratium melinum	Proceratiinae	Proceratiini	(Roger, 1860) 	AT	-	-	Meist <100 (?)
+Pyramica argiola	Myrmicinae	Dacetini	(Emery, 1869) 	CH	-	-	
+Pyramica baudueri	Myrmicinae	Dacetini	(Emery, 1875) 	CH	-	-	
+Solenopsis fugax	Myrmicinae	Solenopsidini	(Latreille, 1798) 	AT, CH, DE	MV, NS, SA, Br, NW, He, Th, Sa, RP, BW, By	3	Einige 100.000; polygyn
+Stenamma debile	Myrmicinae	Stenammini	(Förster, 1850) 	AT, CH, DE	Deutschlandweit	-	56 +/- 40 (extrem 3-180); Meist 1-3 Gynen (extrem 22)
+Stenamma petiolatum	Myrmicinae	Stenammini	Emery, 1897 	CH	-	-	
+Stenamma striatulum	Myrmicinae	Stenammini	Emery, 1895 	CH	-	-	
+Stenamma westwoodi	Myrmicinae	Stenammini	Westwood, 1840 	BE, GB, NL	-	-	
+Strongylognathus alboini	Myrmicinae	Tetramoriini	Finzi, 1924 	CH	-	-	
+Strongylognathus alpinus	Myrmicinae	Tetramoriini	Wheeler, 1909 	CH	-	-	
+Strongylognathus huberi	Myrmicinae	Tetramoriini	Forel, 1874 	CH	-	-	
+Strongylognathus kratochvili	Myrmicinae	Tetramoriini	(Silhavy, 1937) 	SK	-	-	
+Strongylognathus testaceus	Myrmicinae	Tetramoriini	(Schenck, 1852) 	AT, CH, DE	MV, NS, SA, Br, NW, He, Sa, RP, BW, By	3	Meist <2% (max. 5%) der Wirtsameisen; 1 Gyne
+Tapinoma ambiguum	Dolichoderinae	Dolichoderini	Emery, 1925 	AT, CH, DE	Deutschlandweit	3	Oft geringer als bei Tapinoma erraticum
+Tapinoma erraticum	Dolichoderinae	Dolichoderini	(Latreille, 1798) 	AT, CH, DE	NS, SA, NW, He, Th, Sa, RP, BW, By	3	Meist >2.000 (max. 10.000); max. 20 Gynen
+Teleutomyrmex schneideri	Myrmicinae	Tetramoriini	Kutter, 1950 	CH	-	-	
+Temnothorax affinis	Myrmicinae	Formicoxenini	(Mayr, 1855) 	AT, CH, DE	NS, SA, Br, NW, He, Th, Sa, RP, BW, By	V	150-200; 1 Gyne
+Temnothorax albipennis	Myrmicinae	Formicoxenini	(Curtis, 1854) 	AT, CH, DE	SA, NW, He, Th, Sa, RP, BW, By	3	Meist 99 +/- 45 (extrem 34-177); 1 Gyne
+Temnothorax clypeatus	Myrmicinae	Formicoxenini	(Mayr, 1853) 	AT	-	-	
+Temnothorax corticalis	Myrmicinae	Formicoxenini	(Schenck, 1852) 	AT, CH, DE	SA, Br, He, Th, Sa, RP, BW, By	2	Meist 63 +/- 48 (extrem 12-176); 1-2 Gynen
+Temnothorax crassispinus	Myrmicinae	Formicoxenini	(Karavajev, 1926) 	AT, DE	MV, SA, Br, Sa, By	-	Meist 40 +/- 36
+Temnothorax flavicornis	Myrmicinae	Formicoxenini	(Emery, 1870) 	CH	-	-	
+Temnothorax jailensis	Myrmicinae	Formicoxenini	(Arnoldi, 1977) 	AT	-	-	
+Temnothorax interruptus	Myrmicinae	Formicoxenini	(Schenck, 1852) 	AT, CH, DE	NS, SA, Br, NW, He, Th, Sa, RP, BW, By	3	Meist 141 +/- 83 (extrem 31-364); 1-22 Gynen
+Temnothorax lichtensteini	Myrmicinae	Formicoxenini	(Bondroit, 1918) 	CH	-	-	
+Temnothorax lichtensteini sp. 2	Myrmicinae	Formicoxenini 	(?) 	AT, CH	-	-	
+Temnothorax luteus	Myrmicinae	Formicoxenini	(Forel, 1874) 	CH	-	-	
+Temnothorax nadigi	Myrmicinae	Formicoxenini	(Kutter, 1925) 	CH	-	-	
+Temnothorax nigriceps	Myrmicinae	Formicoxenini	(Mayr, 1855) 	AT, CH, DE	NS, SA, NW, He, Th, Sa, RP, BW, By	3	Meist 126 +/- 66 (extrem 59-236); 1 Gyne
+Temnothorax nylanderi	Myrmicinae	Formicoxenini	(Förster, 1850) 	AT, CH, DE	SH, MV, NS, SA, NW, He, Th, Sa, RP, BW, By	-	Meist 50-90; 1 Gyne
+Temnothorax parvulus	Myrmicinae	Formicoxenini	(Schenck, 1852) 	AT, CH, DE	NS, SA, Br, He, Th, Sa, RP, BW, By	3	Meist 59 +/- 30 (3-102), 1 Gyne
+Temnothorax recedens	Myrmicinae	Formicoxenini	Nylander, 1856 	CH	-	-	
+Temnothorax saxonicus	Myrmicinae	Formicoxenini	(Seifert, 1995) 	AT, DE	Sa, BW, By	2	300; 1 Gyne
+Temnothorax sordidulus	Myrmicinae	Formicoxenini	(Müller, 1923) 	AT	-	-	
+Temnothorax tuberum	Myrmicinae	Formicoxenini	(Fabricius, 1775) 	AT, CH, DE	SA, Br, Th, Sa, BW, By	2	Meist 150 +/- 74 (extrem 50-300); 1-15 Gynen
+Temnothorax turcicus	Myrmicinae	Formicoxenini	(Santschi, 1934) 	SK	-	-	
+Temnothorax unifasciatus	Myrmicinae	Formicoxenini	(Latreille, 1798) 	AT, CH, DE	NS, SA, Br, NW, He, Th, Sa, RP, BW, By	V	
+Tetramorium caesptium	Myrmicinae	Tetramoriini	(Linnaeus, 1758) 	AT, CH, DE	Deutschlandweit	-	Bis 80.000; 1 Gyne
+Tetramorium ferox	Myrmicinae	Tetramoriini	Ruzsky, 1903 	AT	-	-	
+Tetramorium hungaricum	Myrmicinae	Tetramoriini	Röszler, 1935 	AT	-	-	
+Tetramorium impurum	Myrmicinae	Tetramoriini	(Förster, 1850) 	AT, CH, DE	NS, SA, NW, He, Th, Sa, RP, BW, By	-	Ähnlich Tetramorium caespitum (?)
+Tetramorium kutteri	Myrmicinae	Tetramoriini	Santschi, 1927 	CH	-	-	
+Tetramorium moravicum	Myrmicinae	Tetramoriini	Kratochvil, 1941 	AT, DE	NW, He, SA, RP	R	
+Tetramorium sp. A	Myrmicinae	Tetramoriini	(Schlick-Steiner, 2006) 	AT, CH	-	-	
+Tetramorium sp. B	Myrmicinae	Tetramoriini	(Schlick-Steiner, 2006) 	AT, CH	-	-	
+Tetramorium sp. C	Myrmicinae	Tetramoriini	(Schlick-Steiner, 2006) 	AT, DE	By	D	
+Tetramorium sp. D	Myrmicinae	Tetramoriini	(Schlick-Steiner, 2006) 	AT	-	-	
+Tetramorium sp. E	Myrmicinae	Tetramoriini	(Schlick-Steiner, 2006) 	AT	-	-	
