@@ -15,30 +15,32 @@
 </head>
 <body>
 
+<div id="head">Ameisenschwarm melden</div>
+
 <div id="form">
 	<form name="postswarm" method="post" enctype="multipart/form-data">
 
 		<!-- position -->
 		<label id="lblLat">Breite:</label>
-		<input type="number" name="lat"	min="-180" max="180" />
+		<input type="number" id="lat" name="lat"	min="-180" max="180" />
 		<label id="lblLon">Länge:</label>
-		<input type="number" name="lon"	min="-90" max="90" />
+		<input type="number" id="lon" name="lon"	min="-90" max="90" />
 		
 		<!-- datetime -->
 		<label id="lbltime">Zeit:</label>
-		<input type="datetime-local" name="time" />
+		<input type="datetime-local" id="time" name="time" />
 
 		<!-- genus / species -->
 		<label id="lblgenus">Gattung:</label>
-		<input type="text" name="genus" />		
+		<input type="text" id="genus" name="genus" />		
 		<label id="lblspecies">Art:</label>
-		<input type="text" name="species" />
+		<input type="text" id="species" name="species" />
 		
 		<!-- OR description (size...) -->
 		<label id="lblsize">Gr&ouml;&szlig;e:</label>
-		<input type="text" name="size" />
+		<input type="text" id="size" name="size" />
 		<label id="lblcolor">Farbe:</label>
-		<input type="text" name="color" />
+		<input type="text" id="size" name="color" />
 		
 		<!-- photo -->
 		<label id="lblphoto">Foto:</label>
@@ -46,14 +48,13 @@
 		<a href="#" onclick="capturePhoto();">Foto aufnehmen</a><br />
 		<a href="#" onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">Aus Album</a><br />
 		<img id="smallImage" src=""></img>
-		<!-- <img style="display:none;" id="largeImage" src=""></img>  -->
 		
 		<!-- comment -->
 		<label id="lblcomment">Art:</label>
-		<input type="text" name="coment" />
+		<input type="text" id="comment" name="comment" />
 		
 		<!-- send it -->
-		<input type="submit" value="Melden" />
+		<input id="submit" type="button" onclick="sumbitData();" value="Melden" />
 	</form>
 </div>
 </body>

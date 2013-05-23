@@ -13,8 +13,35 @@ function onDeviceReady() {
 
 }
 
+/************* Submit data ********************/
+function sumbitData(){
+	//TODO: test
+	server = "http://192.168.100.26:5000/newswarm";
+	
+	var img = document.getElementById('smallImage');
+	var imageURI = img.src;
+	
 
-/************* Camera handling / picture from album *****************/
+	var options = new FileUploadOptions();
+	options.fileKey = "file";
+	options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
+	options.mimeType = "image/jpeg";
+	options.chunkedMode = false;
+
+	// Transfer picture to server
+	var ft = new FileTransfer();
+	ft.upload(imageURI,server, 
+			function(r) {console.log("success");},
+			function(error) {console.log(error.code);}, 
+			options);
+
+	console.log("success!!!!");
+
+}
+
+
+
+/** *********** Camera handling / picture from album **************** */
 
 // Called when a photo is successfully retrieved
 //

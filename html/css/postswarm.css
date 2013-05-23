@@ -8,6 +8,7 @@ div#form
 div#form input{
 	display: block;
 	margin: 10px auto;
+	/*width: 100%;*/
 }
 
 #smallImage
@@ -16,4 +17,10 @@ div#form input{
 	max-width:150px;
 	max-height:150px;
 	margin: 20px auto;
+}
+
+#submit
+{
+	width: 150px;
+	height: 50px;
 }

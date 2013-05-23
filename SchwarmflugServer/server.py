@@ -39,13 +39,16 @@ def newswarm():
         ### POST new swarm into DB
         print 'POST' + request.content
         pass
-    
+    '''
     print request.form['genus']
     print request.form['species']
     print request.form['lat']
     print request.form['lon']
-    print request.form['picture']
+    print request.form['photo']
     print request.form['comment']
+    '''
+    
+    return "123"
     
 
 if __name__ == '__main__':
