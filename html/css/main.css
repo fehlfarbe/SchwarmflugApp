@@ -1,0 +1,25 @@
+@CHARSET "UTF-8";
+
+body{
+	background: #598f44;
+	color: #000;
+	font: 10pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	margin: 5px 10px 10px 10px;
+	padding: 0px;
+}
+
+a:link, a:visited, a:hover, a:active
+{
+	background:#dffad4;  
+	color: #000;
+}
+
+input
+{
+	background: #f9f9c2;
+	color: #3e3e10;
+	height: 20px;
+	font-size: 14pt;
+}
+
+

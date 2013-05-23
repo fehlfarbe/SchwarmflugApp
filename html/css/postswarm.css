@@ -1,0 +1,19 @@
+@CHARSET "UTF-8";
+
+div#form
+{
+	text-align: center;
+}
+
+div#form input{
+	display: block;
+	margin: 10px auto;
+}
+
+#smallImage
+{
+	display:none;
+	max-width:150px;
+	max-height:150px;
+	margin: 20px auto;
+}
