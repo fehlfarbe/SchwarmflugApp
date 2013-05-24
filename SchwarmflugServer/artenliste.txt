@@ -50,7 +50,7 @@ Formica rufa	Formicinae	Formicini	Linnaeus, 1761 	AT, CH, DE	Deutschlandweit	-	N
 Formica rufibarbis	Formicinae	Formicini	Fabricius, 1793 	AT, CH, DE	Deutschlandweit	-	Tendenziell > als Formica cunicularia
 Formica sanguinea	Formicinae	Formicini	Latreille, 1798 	AT, CH, DE	Deutschlandweit	-	Meist 2.000-7.500, selten >10.000; oft mehrere Gynen
 Formica selysi	Formicinae	Formicini	Bondroit, 1918 	AT, CH, DE	BW, By	V	
-formica selysi							
+Formica selysi							
 Formica suecica	Formicinae	Formicini	Adlerz, 1902 	AT	-	-	
 Formica truncorum	Formicinae	Formicini	Fabricius, 1804 	AT, CH, DE	Deutschlandweit	3	
 Formica uralensis	Formicinae	Formicini	Ruzsky, 1895 	CH, DE	SH, MV, NS, BW	1	Oft >300 Gynen

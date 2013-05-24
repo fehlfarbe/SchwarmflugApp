@@ -14,7 +14,7 @@ a:link, a:visited, a:hover, a:active
 	color: #000;
 }
 
-input
+input, textarea, select, option
 {
 	background: #f9f9c2;
 	color: #3e3e10;
@@ -22,9 +22,14 @@ input
 	font-size: 14pt;
 }
 
-#head
+textarea{
+	height: 50px;
+}
+
+div#head
 {
 	position: fixed;
+	z-index: 100;
 	top: 0px;
 	left: 0px;
 	width: 100%;

@@ -8,6 +8,9 @@
 # Java class files
 *.class
 
+#Python bytecode
+*.pyc
+
 # generated files
 bin/
 gen/
