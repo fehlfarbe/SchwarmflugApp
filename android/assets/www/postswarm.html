@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport"
+	content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<link rel="stylesheet" type="text/css" href="css/postswarm.css" />
+
+<script type="text/javascript" src="js/cordova-2.7.0.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.timeago.js"></script>
+<script type="text/javascript" src="js/jquery.jsonp.js"></script>
+<script type="text/javascript" src="js/server.js"></script>
+<script type="text/javascript" src="js/postswarm.js"></script>
+
+<title>Schwarm melden</title>
+</head>
+<body>
+
+<div id="head">Ameisenschwarm melden</div>
+
+<div id="loading">
+	<div id="loadingmsg">Senden</div>
+</div>
+
+<div id="form">
+	<form name="postswarm" method="post" enctype="multipart/form-data">
+
+		<!-- geolocation -->
+		<label id="lbllat">Breite:</label>
+		<input type="number" id="lat" name="lat" min="-180" max="180" />
+		<label id="lbllon">Länge:</label>
+		<input type="number" id="lon" name="lon" min="-90" max="90"/>
+		<a href="#" onClick="locate();">Lokalisieren</a>
+		<div id="geomsg"></div>
+
+		
+		<!-- datetime -->
+		<label id="lbltime">Zeit:</label>
+		<input type="datetime" id="time" name="time"/>
+
+
+		<!-- genus / species -->
+		<label id="lblgenus">Gattung:</label>
+		<select id="genus" name="genus" onchange='getSpecies(this.form.genus.options[this.form.genus.selectedIndex].value);'></select>		
+		<label id="lblspecies">Art:</label>
+		<select id="species" name="species"></select>
+
+		
+		<!-- OR description (size...)
+		<label id="lblsize">Gr&ouml;&szlig;e:</label>
+		<input type="text" id="size" name="size" />
+		<label id="lblcolor">Farbe:</label>
+		<input type="text" id="color" name="color" />
+		 -->
+		 
+		 
+		<!-- photo -->
+		<label id="lblphoto">Foto:</label>
+		<!-- <input type="file" name="photo" /> -->
+		<a href="#" onclick="capturePhoto();">Foto aufnehmen</a>
+		<a href="#" onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">Aus Album</a><br />
+		<img id="smallImage" src=""></img>
+		
+		<!-- comment -->
+		<label id="lblcomment">Kommentar:</label>
+		<!-- <input type="text" id="comment" name="comment" /> -->
+		<textarea id="comment" name="comment" rows = "3" cols = "80"></textarea>
+
+		
+		<!-- send it -->
+		<input id="submit" type="button" onclick="sumbitData();" value="Melden" />
+	</form>
+</div>
+
+<script type="text/javascript" >
+	locate();
+	getGenus();
+	getCurrentTime();
+</script>
+
+</body>
+</html>

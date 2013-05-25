@@ -1,0 +1,88 @@
+@CHARSET "UTF-8";
+
+div#loading
+{
+	position: absolute;
+	display:none;
+	width: 100%;
+	height: 100%;
+	left: 0px;
+	top: 0px;
+	margin: 0px;
+	padding: 0px;
+	background: #030;
+	opacity: 0.5;       /* modern browser */  
+    -moz-opacity: 0.5;  /* older Mozilla browser */  
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; /* IE8 in Standard Compliant Mode */  
+    filter:alpha(opacity=50); /* IE5.x -7.0 */  
+}
+
+div#loadingmsg
+{
+	margin: 10px auto;
+	height: 100%;
+}
+
+div#form
+{
+	text-align: center;
+}
+
+div#form input,
+div#form textarea,
+div#form select
+{
+	display: block;
+	margin: 10px auto;
+	width: 150px;
+	/*width: 100%;*/
+}
+
+div#form a
+{
+	text-decoration: none;
+	display: block;
+	margin: 10px auto;
+	width: 150px;
+	height: 30px;
+	vertical-align: middle;
+	/*width: 100%;*/
+}
+
+div#form #lbllat,
+div#form #lat,
+div#form #lbllon,
+div#form #lon,
+div#form #lblsize,
+div#form #size,
+div#form #lblcolor,
+div#form #color
+{
+	display:none;
+}
+
+#geolocation
+{
+	
+}
+
+#geomsg
+{
+	/*border: 1px solid #000;*/
+	padding: 10px;
+	height: 20px;
+}
+
+#smallImage
+{
+	display:none;
+	max-width:150px;
+	max-height:150px;
+	margin: 10px auto;
+}
+
+#submit
+{
+	width: 150px;
+	height: 50px;
+}
