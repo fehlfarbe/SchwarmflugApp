@@ -3,26 +3,26 @@
 
 var myLocation;	// coordinates
 var mapOptions;
+var map;
 
-google.maps.event.addDomListener(window, 'load', setup); 
 
-function setup() {
-    // wait for PhoneGap to load
-    document.addEventListener("deviceready", onDeviceReady, false);
-        
-    function onDeviceReady() {
-        // get device's geographical location and return it as a Position object (which is then passed to onSuccess)
-        navigator.geolocation.getCurrentPosition(onSuccess, onError);
-    }
+// wait for PhoneGap to load
+document.addEventListener("deviceready", onDeviceReady, false);
+    
+function onDeviceReady() {
+    // get device's geographical location and return it as a Position object (which is then passed to onSuccess)
+    navigator.geolocation.getCurrentPosition(onSuccess, onError);
 }
 
+
 function onSuccess(position) { 
-    myLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    //myLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    myLoaction = new google.maps.LatLng(-34.397, 150.644);
     mapOptions = {	center: myLocation,
     				zoom: 15,
     				mapTypeId: google.maps.MapTypeId.ROADMAP };
     
-    var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions); 
+    map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions); 
 }
 
 /*var request = { location: myLocation, radius: currentRadiusValue, types: [currentPlaceType] };

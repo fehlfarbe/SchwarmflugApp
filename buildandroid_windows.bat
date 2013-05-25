@@ -1,6 +1,7 @@
 @echo off
 REM buildscript for Windows
 REM set PATH for android-sdk/platform-tools and android-sdk/tools
+REM set PATH for %JAVA_HOME%\bin and %ANT_HOME%\bin (Apache ant)
 
 
 REM clean android html files
