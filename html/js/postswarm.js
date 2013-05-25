@@ -96,15 +96,11 @@ function getSpecies(genus)
 		//TODO: select size etc.
 		return;
 	
-	//TODO: get species list from server
 	$.ajax({
 		url: server + "/specieslist?genus=" + genus,
 		success: function(data) {
 			//it works, do something with the data
 			//alert(data.toString());
-			
-			
-			var species = data.toString().split(',');
 			
 			var opt = document.createElement("option");
 			dropdown.options.add(opt);
@@ -115,12 +111,13 @@ function getSpecies(genus)
 			{
 				opt = document.createElement("option");
 				dropdown.options.add(opt);
-				opt.text = opt.value = data.ants[i].species;
+				opt.text = data.ants[i].species + "(" + data.ants[i].country + ")";
+				opt.value = data.ants[i].species;
 			}
 		},
 		error: function() {
 			//something went wrong, handle the error and display a message
-			alert("Error while loading genus list");
+			alert("Fehler beim Laden der Artenliste");
 		}
 	});
 //	

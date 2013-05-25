@@ -41,17 +41,31 @@ def genuslist():
         print '404'
         abort(404)
 
+@app.route('/fullspecieslist')
+def fullspecieslist(): 
+        #sys.stderr.write("****************full list\n")
+        
+        specieslist = species.speciesFromFile('artenliste.txt')
+        if specieslist != None:
+            return Response(json.dumps(specieslist),  mimetype='application/json')
+
 @app.route('/specieslist', methods=['GET', 'POST'])
 def specieslist():
     
-    print(str(request.args["genus"]))    
     if request.method == 'GET':
-        if request.args["genus"] != None:
+        sys.stderr.write("GET\n")
+        
+        if request.args["genus"]:
+            sys.stderr.write("************genus \n")
             specieslist = species.getSpecies(str(request.args['genus']), 'artenliste.txt')
             if specieslist != None:
                 return Response(json.dumps(specieslist),  mimetype='application/json')
     else:
+        sys.stderr.write("abort")
         abort(404)
+        
+        
+        
 
 @app.route('/newswarm', methods=['GET', 'POST'])
 def newswarm():
