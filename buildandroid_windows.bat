@@ -14,8 +14,8 @@ xcopy /s html\* android\assets\www\
 echo done.
 
 REM start build
-echo start build
-start android\cordova\build.bat --debug 
-REM && android\cordova\run --emulator
+REM echo start build
+REM start android\cordova\clean.bat
+REM start android\cordova\build.bat --debug 
+REM start android\cordova\run --emulator
 
-@pause
