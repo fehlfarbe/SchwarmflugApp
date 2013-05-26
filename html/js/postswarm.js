@@ -84,8 +84,9 @@ function getGenus()
 
 }
 
+/*
 function getSpecies(genus)
-{
+{	
 	//clear list
 	var dropdown = document.getElementById('species');
 	$("#species").empty();
@@ -95,6 +96,8 @@ function getSpecies(genus)
 		//$('#species').attr("disabled","disabled");
 		//TODO: select size etc.
 		return;
+	
+	//from db
 	
 	$.ajax({
 		url: server + "/specieslist?genus=" + genus,
@@ -129,7 +132,7 @@ function getSpecies(genus)
 //		default: species = Array();	
 //	}
 }
-
+*/
 /************* Time ***************************/
 function getCurrentTime(){
 	
@@ -141,7 +144,8 @@ function getCurrentTime(){
 /************* Submit data ********************/
 function sumbitData(){
 	
-	//$('#loading').css("display", "block");
+	$('#loading').css("display", "block");
+	$('#loadingmsg').html("&uuml;bermittle Daten..");
 	
 	url = server + "/newswarm";
 	
@@ -169,8 +173,14 @@ function sumbitData(){
 	var ft = new FileTransfer();
 	ft.upload(imageURI,
 			url, 
-			function(r) {alert("Upload successful: "+r.bytesSent+" bytes uploaded.");},
-			function(error) {alert("Upload failed: Code = "+error.code);}, 
+			function(r){
+				alert("Upload successful: "+r.bytesSent+" bytes uploaded.");
+				//$('#loading').css("display", "none");
+			},
+			function(error) {
+				alert("Upload failed: Code = "+error.code);
+				//$('#loading').css("display", "none");
+			},
 			options);
 
 	console.log("Sent data");

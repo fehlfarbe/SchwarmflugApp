@@ -1,22 +1,5 @@
 @CHARSET "UTF-8";
 
-div#loading
-{
-	position: absolute;
-	display:none;
-	width: 100%;
-	height: 100%;
-	left: 0px;
-	top: 0px;
-	margin: 0px;
-	padding: 0px;
-	background: #030;
-	opacity: 0.5;       /* modern browser */  
-    -moz-opacity: 0.5;  /* older Mozilla browser */  
-    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; /* IE8 in Standard Compliant Mode */  
-    filter:alpha(opacity=50); /* IE5.x -7.0 */  
-}
-
 div#loadingmsg
 {
 	margin: 10px auto;
@@ -30,11 +13,16 @@ div#form
 
 div#form input,
 div#form textarea,
-div#form select
+/*div#form select*/
+div#genusdiv,
+div#genusdiv select,
+div#speciesdiv,
+div#speciesdiv select
 {
 	display: block;
 	margin: 10px auto;
 	width: 150px;
+	vertical-align: middle;
 	/*width: 100%;*/
 }
 
@@ -72,6 +60,15 @@ div#form #color
 	padding: 10px;
 	height: 20px;
 }
+
+#genusload, 
+#speciesload
+{
+	display: none;
+	width: 30px;
+	height: 30px;
+	margin: 5px;
+} 
 
 #smallImage
 {

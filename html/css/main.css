@@ -14,7 +14,7 @@ a:link, a:visited, a:hover, a:active
 	color: #000;
 }
 
-input, textarea, select, option
+input, textarea, select, select option
 {
 	background: #f9f9c2;
 	color: #3e3e10;
@@ -22,8 +22,12 @@ input, textarea, select, option
 	font-size: 14pt;
 }
 
+select{
+	height: 28px;
+}
+
 textarea{
-	height: 50px;
+	height: 90px;
 }
 
 div#head
@@ -41,3 +45,30 @@ div#head
 	border-bottom: 1px #000 solid;
 }
 
+div#loading
+{
+	position: absolute;
+	display:none;
+	min-width: 100%;
+	min-height: 100%;
+	height: auto;
+	left: 0px;
+	top: 0px;
+	bottom: 0px;
+	margin: 0px;
+	padding: 0px;
+	overflow:auto;
+	
+	background: #030;
+	opacity: 0.5;       /* modern browser */  
+    -moz-opacity: 0.5;  /* older Mozilla browser */  
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; /* IE8 in Standard Compliant Mode */  
+    filter:alpha(opacity=50); /* IE5.x -7.0 */  
+}
+
+img#loadingimg
+{
+	margin: 10px auto;
+	width: 50%;
+	height: 50%;
+}

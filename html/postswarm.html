@@ -11,8 +11,8 @@
 <script type="text/javascript" src="js/cordova-2.7.0.js"></script>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/jquery.timeago.js"></script>
-<script type="text/javascript" src="js/jquery.jsonp.js"></script>
 <script type="text/javascript" src="js/server.js"></script>
+<script type="text/javascript" src="js/species.js"></script>
 <script type="text/javascript" src="js/postswarm.js"></script>
 
 <title>Schwarm melden</title>
@@ -22,7 +22,8 @@
 <div id="head">Ameisenschwarm melden</div>
 
 <div id="loading">
-	<div id="loadingmsg">Senden</div>
+	<img id="loadingimg" src="img/loading.gif" />
+	<span id="loadingmsg"></span>
 </div>
 
 <div id="form">
@@ -44,9 +45,15 @@
 
 		<!-- genus / species -->
 		<label id="lblgenus">Gattung:</label>
-		<select id="genus" name="genus" onchange='getSpecies(this.form.genus.options[this.form.genus.selectedIndex].value);'></select>		
+		<div id="genusdiv">
+			<select id="genus" name="genus" onchange='getSpecies($("#genus").val());'></select>
+			<img id="genusload" src="img/loading.gif"/>	
+		</div>		
 		<label id="lblspecies">Art:</label>
-		<select id="species" name="species"></select>
+		<div id="speciesdiv">
+			<select id="species" name="species"></select>
+			<img id="speciesload" src="img/loading.gif"/>
+		</div>
 
 		
 		<!-- OR description (size...)
@@ -77,7 +84,7 @@
 
 <script type="text/javascript" >
 	locate();
-	getGenus();
+	testSpeciesDB(); //updates species DB if necessary and reloads genuList
 	getCurrentTime();
 </script>
 

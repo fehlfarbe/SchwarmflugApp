@@ -12,8 +12,10 @@
 *.pyc
 
 # generated files
-bin/
-gen/
+android/bin/
+android/gen/
+android/assets/www
+
 
 # Local configuration file (sdk path, etc)
 local.properties
