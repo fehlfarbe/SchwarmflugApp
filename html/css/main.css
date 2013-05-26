@@ -74,7 +74,8 @@ div#loading
 img#loadingimg
 {
 	display: block;
-	margin: 100px auto;
+	top: 100px;
+	margin: 5px auto;
 	width: 150px;
 	height: 150px;
 }

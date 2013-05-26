@@ -8,7 +8,7 @@ SchwarmflugServer
 Sends and stores mockup data for SchwarmflugApp
 
 '''
-import os, sys
+import os, sys, time
 from flask import Flask, render_template, request, abort, json, jsonify, make_response, redirect, url_for, Response
 from werkzeug import secure_filename
 import species
@@ -71,17 +71,21 @@ def specieslist():
 
 @app.route('/newswarm', methods=['GET', 'POST'])
 def newswarm():
+    
+    #return Response(code=200)
+
     if request.method == 'POST':
         ### POST new swarm into DB
         sys.stderr.write("POST\n")
         sys.stderr.write(str(request.form)+"\n")      
         
         # picture
+        sys.stderr.write("FILE: " + str(request.files['file'])+"\n")  
         upload = request.files['file']
-        if upload and allowed_file(upload.filename):
-            sys.stderr.write("Photo")
+        if upload:
+            sys.stderr.write("Photo\n")
             filename = secure_filename(upload.filename)
-            upload.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            upload.save(os.path.join(app.config['UPLOAD_FOLDER'], str(time.time())+filename))
             #return redirect(url_for('uploaded_file', filename=filename))
         
         '''

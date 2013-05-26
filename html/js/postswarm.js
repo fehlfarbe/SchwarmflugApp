@@ -19,6 +19,10 @@ document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
 	pictureSource = navigator.camera.PictureSourceType;
 	destinationType = navigator.camera.DestinationType;
+	
+	locate();
+	testSpeciesDB(); //updates species DB if necessary and reloads genuList
+	getCurrentTime();
 }
 
 /************* geolocation *****************/
@@ -48,7 +52,7 @@ function onGeoError(error) {
 
 function locate()
 {
-	$("#geomsg").html('<img src="img/loading.gif" />');
+	$("#geomsg").html('<img src="img/antload32.gif" />');
 	navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
 }
 
@@ -149,15 +153,22 @@ function sumbitData(){
 	
 	url = server + "/newswarm";
 	
-	var img = document.getElementById('smallImage');
-	var imageURI = img.src;
-	
+	//var img = document.getElementById('smallImage');
+	var imageURI = $('#smallImage').attr('src');
+	//alert($('#smallImage').attr('src'));
 
 	var options = new FileUploadOptions();
-	options.fileKey = "file";
-	options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);
-	options.mimeType = "image/jpeg";
-	options.chunkedMode = false;
+	if(imageURI != ''){
+		options.fileKey = "file";
+		options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);
+		options.mimeType = "image/jpeg";
+		options.chunkedMode = false;		
+	} else {
+		options.fileKey = "file";
+		options.fileName = "";
+		options.mimeType = "";
+		options.chunkedMode = "";
+	}
 	
 	var params = new Object();
 	params.lat = $('#lat').val();

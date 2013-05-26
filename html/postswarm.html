@@ -22,7 +22,7 @@
 <div id="head">Ameisenschwarm melden</div>
 
 <div id="loading">
-	<img id="loadingimg" src="img/loading.gif" />
+	<img id="loadingimg" src="img/antload256.gif" />
 	<span id="loadingmsg"></span>
 </div>
 
@@ -47,12 +47,12 @@
 		<label id="lblgenus">Gattung:</label>
 		<div id="genusdiv">
 			<select id="genus" name="genus" onchange='getSpecies($("#genus").val());'></select>
-			<img id="genusload" src="img/loading.gif"/>	
+			<img id="genusload" src="img/antload32.gif"/>	
 		</div>		
 		<label id="lblspecies">Art:</label>
 		<div id="speciesdiv">
 			<select id="species" name="species"></select>
-			<img id="speciesload" src="img/loading.gif"/>
+			<img id="speciesload" src="img/antload32.gif"/>
 		</div>
 
 		
@@ -81,12 +81,6 @@
 		<input id="submit" type="button" onclick="sumbitData();" value="Melden" />
 	</form>
 </div>
-
-<script type="text/javascript" >
-	locate();
-	testSpeciesDB(); //updates species DB if necessary and reloads genuList
-	getCurrentTime();
-</script>
 
 </body>
 </html>
