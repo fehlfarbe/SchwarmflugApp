@@ -30,7 +30,7 @@ def allowed_file(filename):
 def index():
     return render_template('index.html')
 
-
+'''
 @app.route('/genuslist')
 def genuslist():
     genuslist = species.genusFromFile('artenliste.txt')
@@ -40,6 +40,7 @@ def genuslist():
     else:
         print '404'
         abort(404)
+'''
 
 @app.route('/fullspecieslist')
 def fullspecieslist(): 
@@ -49,6 +50,7 @@ def fullspecieslist():
         if specieslist != None:
             return Response(json.dumps(specieslist),  mimetype='application/json')
 
+'''
 @app.route('/specieslist', methods=['GET', 'POST'])
 def specieslist():
     
@@ -63,7 +65,7 @@ def specieslist():
     else:
         sys.stderr.write("abort")
         abort(404)
-        
+'''        
         
         
 
@@ -71,7 +73,8 @@ def specieslist():
 def newswarm():
     if request.method == 'POST':
         ### POST new swarm into DB
-        print str(request.form)      
+        sys.stderr.write("POST\n")
+        sys.stderr.write(str(request.form)+"\n")      
         
         # picture
         upload = request.files['file']
@@ -79,13 +82,14 @@ def newswarm():
             sys.stderr.write("Photo")
             filename = secure_filename(upload.filename)
             upload.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return redirect(url_for('uploaded_file', filename=filename))
+            #return redirect(url_for('uploaded_file', filename=filename))
         
+        '''
         if request.form['datetime'] != None:
             sys.stderr.write(str(request.form['datetime']))
         if request.form['lon'] != None:
             sys.stderr.write(str(request.form['lon']))
-        '''
+        
         if request.form['lat'] != None:
             print request.form['lat']
         if request.form['genus'] != None:
@@ -96,9 +100,9 @@ def newswarm():
             print request.form['comment']
         '''
     else:
-        print str(request.method)
+        sys.stderr.write(str(request.method))
     
-    return "OK"
+    return Response()
     
 
 if __name__ == '__main__':

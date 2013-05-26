@@ -48,7 +48,7 @@ function onGeoError(error) {
 
 function locate()
 {
-	$("#geomsg").html("Lokalisiere...");
+	$("#geomsg").html('<img src="img/loading.gif" />');
 	navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
 }
 
@@ -175,11 +175,12 @@ function sumbitData(){
 			url, 
 			function(r){
 				alert("Upload successful: "+r.bytesSent+" bytes uploaded.");
-				//$('#loading').css("display", "none");
+				$('#loading').css("display", "none");
 			},
 			function(error) {
-				alert("Upload failed: Code = "+error.code);
-				//$('#loading').css("display", "none");
+				alert("Upload failed: Code = "  +error.code +
+						"\n" + error.message);
+				$('#loading').css("display", "none");
 			},
 			options);
 

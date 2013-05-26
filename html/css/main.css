@@ -47,11 +47,12 @@ div#head
 
 div#loading
 {
-	position: absolute;
+	position: fixed;
 	display:none;
 	min-width: 100%;
 	min-height: 100%;
-	height: auto;
+	height:auto !important; /* moderne Browser */
+	height:100%; /* IE */
 	left: 0px;
 	top: 0px;
 	bottom: 0px;
@@ -63,12 +64,17 @@ div#loading
 	opacity: 0.5;       /* modern browser */  
     -moz-opacity: 0.5;  /* older Mozilla browser */  
     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; /* IE8 in Standard Compliant Mode */  
-    filter:alpha(opacity=50); /* IE5.x -7.0 */  
+    filter:alpha(opacity=50); /* IE5.x -7.0 */
+    
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
 }
 
 img#loadingimg
 {
-	margin: 10px auto;
-	width: 50%;
-	height: 50%;
+	display: block;
+	margin: 100px auto;
+	width: 150px;
+	height: 150px;
 }
