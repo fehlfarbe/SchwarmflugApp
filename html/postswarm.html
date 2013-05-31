@@ -7,10 +7,15 @@
 	content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 <link rel="stylesheet" type="text/css" href="css/main.css" />
 <link rel="stylesheet" type="text/css" href="css/postswarm.css" />
+<link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="css/jquery-ui-timepicker-addon.css" />
+
 
 <script type="text/javascript" src="js/cordova-2.7.0.js"></script>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/jquery.timeago.js"></script>
+<script type="text/javascript" src="js/jquery-ui.js"></script>
+<script type="text/javascript" src="js/jquery-ui-timepicker-addon.js"></script>
 <script type="text/javascript" src="js/server.js"></script>
 <script type="text/javascript" src="js/species.js"></script>
 <script type="text/javascript" src="js/postswarm.js"></script>
@@ -40,13 +45,14 @@
 		
 		<!-- datetime -->
 		<label id="lbltime">Zeit:</label>
-		<input type="datetime" id="time" name="time"/>
+		<input type="datetime" id="time" name="time" readonly="readonly"/>
+		<!-- <a href="#" onClick="$('#time').click();">K</a>  -->
 
 
 		<!-- genus / species -->
 		<label id="lblgenus">Gattung:</label>
 		<div id="genusdiv">
-			<select id="genus" name="genus" onchange='getSpecies($("#genus").val());'></select>
+			<select id="genus" name="genus" onChange='getSpecies($("#genus").val());'></select>
 			<img id="genusload" src="img/antload32.gif"/>	
 		</div>		
 		<label id="lblspecies">Art:</label>
@@ -62,7 +68,6 @@
 		<label id="lblcolor">Farbe:</label>
 		<input type="text" id="color" name="color" />
 		 -->
-		 
 		 
 		<!-- photo -->
 		<label id="lblphoto">Foto:</label>

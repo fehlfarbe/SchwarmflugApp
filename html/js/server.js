@@ -1,5 +1,5 @@
 ///////// Server Settings
-address = "192.168.100.26";
+address = "192.168.100.28";
 protocol = "http://";
 port = "5000";
 

@@ -28,10 +28,10 @@ function updateSpeciesDB(){
 				}
 			);
 		},
-		error: function() {
+		error: function(e) {
 			// something went wrong, handle the error and
 			// display a message
-			alert("Fehler beim Laden der Artenliste");
+			alert("Fehler beim Laden der Artenliste " + e.message);
 			$('#loading').css("display", "none");
 			//$('#loadingmsg').html("Artenliste wird aktualisiert...")
 		}
@@ -149,7 +149,8 @@ function getSpecies(genus){
 						    }
 						    
 						    $('#speciesload').css("display", "none");
-						},
+						    $('#species').focus();
+				},
 						function(err){
 							alert("Fehler bei Aktualisierung " + err.message);
 						});
