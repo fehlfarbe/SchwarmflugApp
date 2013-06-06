@@ -23,8 +23,8 @@ function onDeviceReady() {
 function loadGoogleMaps() {
 	googleMapsState = "loading";
 	
-	var script = document.createElement("script");
-	script.src = "http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=googleMapsReady";
+	/*var script = document.createElement("script");
+	script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyDObviDRCgu02OgDIjrTzboCIfythuJoVk&v=3.exp&sensor=false&callback=googleMapsReady";
 	script.type = "text/javascript";
 	
 	script.addEventListener("error", function(e) {
@@ -39,6 +39,8 @@ function loadGoogleMaps() {
 	}, false);
 	
 	document.getElementsByTagName("head")[0].appendChild(script);
+	*/
+	initMap();
 }
 //}
 
@@ -56,5 +58,7 @@ function initMap() {
 					zoom: 15,
 					mapTypeId: google.maps.MapTypeId.ROADMAP };
     
-    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+    map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+    
+    google.maps.event.trigger(map, 'resize');
 }
