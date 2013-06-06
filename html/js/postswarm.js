@@ -12,19 +12,34 @@ var destinationType; // sets the format of returned value
 
 // Wait for Cordova to connect with the device
 //
-document.addEventListener("deviceready", onDeviceReady, false);
-
+//document.addEventListener("deviceready", onDeviceReady, false);
 // Cordova is ready to be used!
 //
-function onDeviceReady() {
+
+/*function onDeviceReady() {
+	alert("postswarm.js");
 	pictureSource = navigator.camera.PictureSourceType;
 	destinationType = navigator.camera.DestinationType;
-	
 	locate();
 	testSpeciesDB(); //updates species DB if necessary and reloads genuList
 	getCurrentTime();
-}
+	
 
+	//datetimepicker
+	$.timepicker.regional['de'] = {
+			  timeOnlyTitle: 'Uhrzeit auswählen',
+			  timeText: 'Zeit',
+			  hourText: 'Stunde',
+			  minuteText: 'Minute',
+			  secondText: 'Sekunde',
+			  currentText: 'Jetzt',
+			  closeText: 'Auswählen',
+			  ampm: false
+			};
+	$.timepicker.setDefaults($.timepicker.regional['de']);
+	$('#time').datetimepicker();
+}
+*/
 /************* geolocation *****************/
 
 var onGeoSuccess = function(position) {
@@ -57,6 +72,7 @@ function locate()
 }
 
 /************* get species / genus *************/
+/*
 function getGenus()
 {
 	//genus = Array("Lasius", "Camponotus", "Formica", "Temnothorax");
@@ -87,7 +103,7 @@ function getGenus()
 	});
 
 }
-
+*/
 /*
 function getSpecies(genus)
 {	
@@ -141,7 +157,7 @@ function getSpecies(genus)
 function getCurrentTime(){
 	
 	var d = new Date();
-	$("#time").val(d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()+
+	$("#time").val(d.getFullYear()+"/"+(d.getMonth()+1 < 10 ? '0' + (d.getMonth()+1) : d.getMonth()+1)+"/"+d.getDate()+
 			" "+d.getHours()+":"+d.getMinutes());
 }
 
@@ -212,6 +228,7 @@ function onPhotoDataSuccess(imageData) {
 	// Get image handle
 	//
 	var smallImage = document.getElementById('smallImage');
+	smallImage.src = "";
 
 	// Unhide image elements
 	//
@@ -221,6 +238,9 @@ function onPhotoDataSuccess(imageData) {
 	// The inline CSS rules are used to resize the image
 	//
 	smallImage.src = "data:image/jpeg;base64," + imageData;
+	
+	//scroll to image label
+	$('html, body').animate({scrollTop: $('#lblphoto').offset().top}, 2500);
 }
 
 // Called when a photo is successfully retrieved
@@ -233,7 +253,7 @@ function onPhotoURISuccess(imageURI) {
 	//
 	//var largeImage = document.getElementById('largeImage');
 	var smallImage = document.getElementById('smallImage');
-	
+	smallImage.src = "";
 	// Unhide image elements
 	//
 	smallImage.style.display = 'block';
@@ -242,6 +262,9 @@ function onPhotoURISuccess(imageURI) {
 	// The inline CSS rules are used to resize the image
 	//
 	smallImage.src = imageURI;
+	
+	//scroll to image label
+	$('html, body').animate({scrollTop: $('#lblphoto').offset().top}, 2500);
 }
 
 // A button will call this function

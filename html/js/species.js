@@ -28,10 +28,10 @@ function updateSpeciesDB(){
 				}
 			);
 		},
-		error: function() {
+		error: function(e) {
 			// something went wrong, handle the error and
 			// display a message
-			alert("Fehler beim Laden der Artenliste");
+			alert("Fehler beim Laden der Artenliste " + e.message);
 			$('#loading').css("display", "none");
 			//$('#loadingmsg').html("Artenliste wird aktualisiert...")
 		}
@@ -81,21 +81,27 @@ function genusQuerySuccess(tx, results) {
 	
 	console.log("getGenusList success!");
 	
-	var dropdown = document.getElementById('genus');
-	var opt = document.createElement("option");
-	dropdown.options.add(opt);
-	opt.text = "Unbekannt";
-	opt.value = "unknown";
+//	var dropdown = document.getElementById('genus');
+//	var opt = document.createElement("option");
+//	dropdown.options.add(opt);
+//	opt.text = "Unbekannt";
+//	opt.value = "unknown";
+	alert("ladt...");
+	$('#genus').append('<option value="unknown">Unbekannt</option>');
 
     for (var i=0; i<results.rows.length; i++){
-		opt = document.createElement("option");
-		dropdown.options.add(opt);
-		opt.text = opt.value = results.rows.item(i).genus;
-//        genuslist.push(results.rows.item(i).genus);
-//        console.log(results.rows.item(i).genus);
+    	$('#genus').append('<option value="'+results.rows.item(i).genus+'">'+results.rows.item(i).genus+'</option>');
+        console.log('<option value="'+results.rows.item(i).genus+'">'+results.rows.item(i).genus+'</option>');
     }
+    alert("liste fertig");
+    //$('#genus').listview('refresh');
+    //$('#genus').selectmenu();
+    $('#genus').selectmenu('refresh', true);
+    alert("fertgi");
     
-    $('#genusload').css("display", "none");
+    //$("#genus").html(optionList).selectmenu('refresh', true);
+    
+    //$('#genusload').css("display", "none");
     //alert(results.rows.length);
     //alert(genuslist);
 }
@@ -134,22 +140,24 @@ function getSpecies(genus){
 						[], 
 						function(tx, results){
 							//alert(results.rows.length);
-							
-							var opt = document.createElement("option");
-							dropdown.options.add(opt);
-							opt.text = "sp.";
-							opt.value = "sp";
+							$('#species').append('<option value="sp">sp.</option>');
+//							var opt = document.createElement("option");
+//							dropdown.options.add(opt);
+//							opt.text = "sp.";
+//							opt.value = "sp";
 							
 						    for (var i=0; i<results.rows.length; i++){
-						        console.log(results.rows.item(i).species);
-								opt = document.createElement("option");
-								dropdown.options.add(opt);
-								//opt.text = data.ants[i].species + "(" + data.ants[i].country + ")";
-								opt.text = opt.value = results.rows.item(i).species;
+//						        console.log(results.rows.item(i).species);
+//								opt = document.createElement("option");
+//								dropdown.options.add(opt);
+//								opt.text = opt.value = results.rows.item(i).species;
+						    	$('#species').append('<option value="'+results.rows.item(i).species+'">'+results.rows.item(i).species+'</option>');
 						    }
+						    $('#species').selectmenu('refresh', true);
 						    
-						    $('#speciesload').css("display", "none");
-						},
+						    //$('#speciesload').css("display", "none");
+						    $('#species').focus();
+				},
 						function(err){
 							alert("Fehler bei Aktualisierung " + err.message);
 						});
