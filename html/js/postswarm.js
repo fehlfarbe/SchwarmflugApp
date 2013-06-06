@@ -157,15 +157,14 @@ function getSpecies(genus)
 function getCurrentTime(){
 	
 	var d = new Date();
-	$("#time").val(d.getFullYear()+"/"+(d.getMonth()+1 < 10 ? '0' + (d.getMonth()+1) : d.getMonth()+1)+"/"+d.getDate()+
-			" "+d.getHours()+":"+d.getMinutes());
+	$('#date').val(d.getFullYear()+"/"+(d.getMonth()+1 < 10 ? '0' + (d.getMonth()+1) : d.getMonth()+1)+"/"+d.getDate());
+	$("#time").val(d.getHours()+":" + (d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes()) );
 }
 
 /************* Submit data ********************/
 function sumbitData(){
 	
-	$('#loading').css("display", "block");
-	$('#loadingmsg').html("&uuml;bermittle Daten..");
+	$.mobile.showPageLoadingMsg("Übermittle Daten...");
 	
 	url = server + "/newswarm";
 	
@@ -202,12 +201,21 @@ function sumbitData(){
 			url, 
 			function(r){
 				alert("Upload successful: "+r.bytesSent+" bytes uploaded.");
-				$('#loading').css("display", "none");
+				$.mobile.hidePageLoadingMsg();
 			},
 			function(error) {
-				alert("Upload failed: Code = "  +error.code +
-						"\n" + error.message);
-				$('#loading').css("display", "none");
+				
+				switch(error.code)
+				{
+//				case 0:
+//				case 1:
+//				case 2:
+				case 3: alert("Konnte keine Verbindung zu Server aufbauen. Timeout");
+				default: alert("failed Code: " + error.code + "\n" + error.message);
+				
+				}
+				
+				$.mobile.hidePageLoadingMsg();
 			},
 			options);
 

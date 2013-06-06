@@ -31,8 +31,16 @@
 
 
 					<!-- datetime -->
-					<label id="lbltime">Zeit:</label> <input type="datetime" id="time"
-						name="time" readonly="readonly" />
+					<label for="date">Date</label>        
+					<input name="date" type="text" data-role="datebox" id="date" 
+					    data-options='{"mode":"calbox"}' />
+					    
+					<label for="time">Time</label>					        
+					<input name="time" type="text" data-role="datebox" id="time"
+					    data-options='{"mode": "timebox", "overrideTimeFormat":24}' />
+					
+					<!-- <label id="lbltime">Zeit:</label> <input type="datetime" id="time"
+						name="time" readonly="readonly" /> -->
 					<!-- <a href="#" onClick="$('#time').click();">K</a>  -->
 
 
