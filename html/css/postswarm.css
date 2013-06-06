@@ -11,9 +11,9 @@ div#form
 	text-align: center;
 }
 
+/*
 div#form input,
 div#form textarea,
-/*div#form select*/
 div#genusdiv,
 div#genusdiv select,
 div#speciesdiv,
@@ -25,6 +25,7 @@ div#speciesdiv select
 	vertical-align: middle;
 	/*width: 100%;*/
 }
+*/
 
 div#form a
 {
@@ -84,8 +85,10 @@ div#form #color
 	margin: 10px auto;
 }
 
+/*
 #submit
 {
 	width: 150px;
 	height: 50px;
 }
+*/

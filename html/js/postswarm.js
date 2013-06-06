@@ -12,10 +12,12 @@ var destinationType; // sets the format of returned value
 
 // Wait for Cordova to connect with the device
 //
-document.addEventListener("deviceready", onDeviceReady, false);
+//document.addEventListener("deviceready", onDeviceReady, false);
 // Cordova is ready to be used!
 //
-function onDeviceReady() {
+
+/*function onDeviceReady() {
+	alert("postswarm.js");
 	pictureSource = navigator.camera.PictureSourceType;
 	destinationType = navigator.camera.DestinationType;
 	locate();
@@ -37,7 +39,7 @@ function onDeviceReady() {
 	$.timepicker.setDefaults($.timepicker.regional['de']);
 	$('#time').datetimepicker();
 }
-
+*/
 /************* geolocation *****************/
 
 var onGeoSuccess = function(position) {
