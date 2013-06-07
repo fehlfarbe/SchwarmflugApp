@@ -6,8 +6,8 @@
 <meta name="viewport"
 	content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 
-<link rel="stylesheet" type="text/css" href="css/postswarm.css" />
-
+<!-- <link rel="stylesheet" type="text/css" href="css/postswarm.css" />
+ -->
 
 <title>Schwarm melden</title>
 </head>
@@ -31,8 +31,16 @@
 
 
 					<!-- datetime -->
-					<label id="lbltime">Zeit:</label> <input type="datetime" id="time"
-						name="time" readonly="readonly" />
+					<label for="date">Date</label>        
+					<input name="date" type="text" data-role="datebox" id="date" 
+					    data-options='{"mode":"calbox"}' />
+					    
+					<label for="time">Time</label>					        
+					<input name="time" type="text" data-role="datebox" id="time"
+					    data-options='{"mode": "timebox", "overrideTimeFormat":24}' />
+					
+					<!-- <label id="lbltime">Zeit:</label> <input type="datetime" id="time"
+						name="time" readonly="readonly" /> -->
 					<!-- <a href="#" onClick="$('#time').click();">K</a>  -->
 
 
@@ -78,9 +86,9 @@
 
 		</div>
 		<!-- /content -->
-		<div data-role="footer">
-			<h4>My Footer</h4>
-		</div>
+<!-- 		<div data-role="footer">
+			<h4>Fußzeile</h4>
+		</div> -->
 		<!-- /footer -->
 	</div>
 	<!-- /page -->

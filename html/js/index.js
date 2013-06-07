@@ -14,7 +14,7 @@ function onDeviceReady() {
 			pictureSource = navigator.camera.PictureSourceType;
 			destinationType = navigator.camera.DestinationType;
 			locate();
-			testSpeciesDB(); //updates species DB if necessary and reloads genuList
+			testSpeciesDB(); //updates species DB if necessary and reloads genusList
 			getCurrentTime();
 		} 
 		else if (attr.indexOf('swarmmap.html') !== -1) {

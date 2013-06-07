@@ -80,30 +80,13 @@ function genusErrorCB(err) {
 function genusQuerySuccess(tx, results) {
 	
 	console.log("getGenusList success!");
-	
-//	var dropdown = document.getElementById('genus');
-//	var opt = document.createElement("option");
-//	dropdown.options.add(opt);
-//	opt.text = "Unbekannt";
-//	opt.value = "unknown";
-	alert("ladt...");
 	$('#genus').append('<option value="unknown">Unbekannt</option>');
 
     for (var i=0; i<results.rows.length; i++){
     	$('#genus').append('<option value="'+results.rows.item(i).genus+'">'+results.rows.item(i).genus+'</option>');
         console.log('<option value="'+results.rows.item(i).genus+'">'+results.rows.item(i).genus+'</option>');
     }
-    alert("liste fertig");
-    //$('#genus').listview('refresh');
-    //$('#genus').selectmenu();
     $('#genus').selectmenu('refresh', true);
-    alert("fertgi");
-    
-    //$("#genus").html(optionList).selectmenu('refresh', true);
-    
-    //$('#genusload').css("display", "none");
-    //alert(results.rows.length);
-    //alert(genuslist);
 }
 
 function genusQueryDB(tx) {
@@ -154,9 +137,7 @@ function getSpecies(genus){
 						    	$('#species').append('<option value="'+results.rows.item(i).species+'">'+results.rows.item(i).species+'</option>');
 						    }
 						    $('#species').selectmenu('refresh', true);
-						    
-						    //$('#speciesload').css("display", "none");
-						    $('#species').focus();
+						    $('#species').selectmenu();
 				},
 						function(err){
 							alert("Fehler bei Aktualisierung " + err.message);
