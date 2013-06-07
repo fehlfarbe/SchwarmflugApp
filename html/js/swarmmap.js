@@ -14,13 +14,7 @@ function loadGoogleMaps() {
 	
 	//myLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 	try {
-		/*myLoaction = new google.maps.LatLng(-34.397, 150.644);
-		mapOptions = {	center: myLocation,
-						zoom: 15,
-						mapTypeId: google.maps.MapTypeId.ROADMAP };
-	    
-	    map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-	    */
+		
 		$('#map_canvas').gmap({
     		'center': new google.maps.LatLng(51.042, 13.727),
     		'zoom': 15,
@@ -30,8 +24,14 @@ function loadGoogleMaps() {
 		
 		$('#map_canvas').gmap('option', 'streetViewControl', 'false');
 		$('#map_canvas').gmap('option', 'zoomControl', 'true');
-		$('#map_canvas').gmap('option', 'zoomControlOptions', { 'style': google.maps.ZoomControlStyle.SMALL, 'position': google.maps.ControlPosition.TOP_LEFT });
-	
+		$('#map_canvas').gmap('option', 'zoomControlOptions', {'style': google.maps.ZoomControlStyle.SMALL, 'position': google.maps.ControlPosition.TOP_LEFT});
+		
+		var marker = $('#map_canvas').gmap('addMarker', {'position': '51.042,13.727', 'bounds': false, 'title': 'Ameisen','animation': google.maps.Animation.DROP});
+		marker.click(function(){
+			$('#map_canvas').gmap('openInfoWindow', {'content': 'Hier gibt es grad nen Ameisenschwarmflug!'}, marker);
+		});
+		
+		
 	} catch(e) {
 		console.log("error occured with google maps" + e);
 	}
