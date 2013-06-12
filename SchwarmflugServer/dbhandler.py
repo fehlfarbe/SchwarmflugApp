@@ -7,6 +7,7 @@ import sqlite3 as sql
 import species
 import sys
 import json
+import math
 
 ### Settings
 dbname = "antbase.db"
@@ -109,13 +110,25 @@ def newSwarm(position, datetime, genus, species, image, comment):
             
     swarmList()
             
-def swarmList():
+def swarmList(position = None, radius = None):
     con = sql.connect(dbname)
     
     with con:
         cur = con.cursor()
         
-        data = cur.execute("SELECT * FROM swarms")
+        if position == None or radius == None:
+            data = cur.execute("SELECT * FROM swarms")
+        else:
+            
+            ### ToDo calculate radius in degree
+            #degree = math.cos(radius / 6378.388)
+            
+            data = cur.execute("SELECT * FROM swarms WHERE\
+            lat > " + str(position[0] - radius) + " AND \
+            lat < " + str(position[0] + radius) + " AND \
+            lon > " + str(position[1] - radius) + " AND \
+            lon < " + str(position[1] + radius))
+            
         rows = cur.fetchall()
         
         swarms = []

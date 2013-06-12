@@ -28,7 +28,7 @@ con = None
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
-''' Sites / Routes '''
+''' Sites '''
 
 @app.route('/')
 def index():
@@ -47,10 +47,31 @@ def index():
     
     #return render_template('index.html')
 
-@app.route('/fullspecieslist')
-def fullspecieslist(): 
-        #sys.stderr.write("****************full list\n")
+''' Routes '''
+@app.route('/swarmlist', methods=['GET', 'POST'])
+def swarmlist():
+    
+    lat = float(request.args.get('lat'))
+    lon = float(request.args.get('lon'))
+    radius = float(request.args.get('radius'))
+    
+    sys.stderr.write(str(lat) + " " + str(lon) + " " + str(radius) + "\n")
+    if lat != None and lon != None and radius != None:
+        swarmlist = dbhandler.swarmList([lat, lon], radius)
+    else:
+        swarmlist = dbhandler.swarmList()
+    
+    if swarmlist != None:
+        jsonstr = ""
+        for swarm in swarmlist:
+            jsonstr += json.dumps(swarm) + "\n"            
         
+        return Response(json.dumps({"swarms" : swarmlist}), mimetype='application/json')
+    
+    return Response()
+
+@app.route('/fullspecieslist')
+def fullspecieslist():        
         specieslist = dbhandler.fullSpeciesList()
         if specieslist != None:
             return Response(json.dumps(specieslist),  mimetype='application/json')
