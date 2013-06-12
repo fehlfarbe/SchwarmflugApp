@@ -11,7 +11,7 @@ Sends and stores mockup data for SchwarmflugApp
 import os, sys, time
 from flask import Flask, render_template, request, abort, json, jsonify, make_response, redirect, url_for, Response
 from werkzeug import secure_filename
-import species
+import dbhandler
 
 # Configuration
 UPLOAD_FOLDER = './uploads'
@@ -22,52 +22,39 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.debug = True
 app.config.from_object(__name__)
 
+con = None
+
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
+''' Sites / Routes '''
+
 @app.route('/')
 def index():
-    return render_template('index.html')
-
-'''
-@app.route('/genuslist')
-def genuslist():
-    genuslist = species.genusFromFile('artenliste.txt')
     
-    if genuslist != None:
-        return Response(json.dumps(genuslist),  mimetype='application/json')
-    else:
-        print '404'
-        abort(404)
-'''
+    swarmlist = dbhandler.swarmList()
+    
+    res = ""
+    
+    for swarm in swarmlist:
+        res += "<h2>Schwarm " + str(swarm['id']) +"</h2><br /> \
+                " + swarm['genus'] + " " + swarm['species'] + " <br />\
+                " + swarm['comment'] + " <br /> \
+                <img src=\"uploads/" + swarm['image'] + "\" />"
+    
+    return Response(res)
+    
+    #return render_template('index.html')
 
 @app.route('/fullspecieslist')
 def fullspecieslist(): 
         #sys.stderr.write("****************full list\n")
         
-        specieslist = species.speciesFromFile('artenliste.txt')
+        specieslist = dbhandler.fullSpeciesList()
         if specieslist != None:
             return Response(json.dumps(specieslist),  mimetype='application/json')
 
-'''
-@app.route('/specieslist', methods=['GET', 'POST'])
-def specieslist():
-    
-    if request.method == 'GET':
-        sys.stderr.write("GET\n")
-        
-        if request.args["genus"]:
-            sys.stderr.write("************genus \n")
-            specieslist = species.getSpecies(str(request.args['genus']), 'artenliste.txt')
-            if specieslist != None:
-                return Response(json.dumps(specieslist),  mimetype='application/json')
-    else:
-        sys.stderr.write("abort")
-        abort(404)
-'''        
-        
-        
 
 @app.route('/newswarm', methods=['GET', 'POST'])
 def newswarm():
@@ -77,37 +64,34 @@ def newswarm():
     if request.method == 'POST':
         ### POST new swarm into DB
         sys.stderr.write("POST\n")
+        sys.stderr.write(str(request)+"\n")      
         sys.stderr.write(str(request.form)+"\n")      
         
         # picture
         sys.stderr.write("FILE: " + str(request.files['file'])+"\n")  
         upload = request.files['file']
+        filename = ""
         if upload:
             sys.stderr.write("Photo\n")
             filename = secure_filename(upload.filename)
-            upload.save(os.path.join(app.config['UPLOAD_FOLDER'], str(time.time())+filename))
+            filename = str(time.time())+filename+".jpg"
+            upload.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             #return redirect(url_for('uploaded_file', filename=filename))
         
-        '''
-        if request.form['datetime'] != None:
-            sys.stderr.write(str(request.form['datetime']))
-        if request.form['lon'] != None:
-            sys.stderr.write(str(request.form['lon']))
-        
-        if request.form['lat'] != None:
-            print request.form['lat']
-        if request.form['genus'] != None:
-            print request.form['genus']
-        if request.form['species'] != None:
-            print request.form['species']
-        if request.form['comment'] != None:
-            print request.form['comment']
-        '''
+        dbhandler.newSwarm([request.form['lat'], request.form['lon']], 
+                           str(request.form['date']) + " " + str(request.form['time']),
+                           request.form['genus'],
+                           request.form['species'],
+                           filename,
+                           request.form['comment'])
     else:
         sys.stderr.write(str(request.method))
     
     return Response()
-    
+ 
+
 
 if __name__ == '__main__':
-    app.run(host="192.168.100.28", port=5000)
+   
+    dbhandler.fillDB()
+    app.run(host="192.168.100.28", port=5000)    

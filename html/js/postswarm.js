@@ -1,45 +1,11 @@
-/*
-
-var lon;
-var lat;
-var datetime;
-var genus;
-var species;
- */
+var photo;
 var pictureSource; // picture source
 var destinationType; // sets the format of returned value
+//var imgURI;
 //var comment;
 
-// Wait for Cordova to connect with the device
-//
-//document.addEventListener("deviceready", onDeviceReady, false);
-// Cordova is ready to be used!
-//
 
-/*function onDeviceReady() {
-	alert("postswarm.js");
-	pictureSource = navigator.camera.PictureSourceType;
-	destinationType = navigator.camera.DestinationType;
-	locate();
-	testSpeciesDB(); //updates species DB if necessary and reloads genuList
-	getCurrentTime();
-	
 
-	//datetimepicker
-	$.timepicker.regional['de'] = {
-			  timeOnlyTitle: 'Uhrzeit auswählen',
-			  timeText: 'Zeit',
-			  hourText: 'Stunde',
-			  minuteText: 'Minute',
-			  secondText: 'Sekunde',
-			  currentText: 'Jetzt',
-			  closeText: 'Auswählen',
-			  ampm: false
-			};
-	$.timepicker.setDefaults($.timepicker.regional['de']);
-	$('#time').datetimepicker();
-}
-*/
 /************* geolocation *****************/
 
 var onGeoSuccess = function(position) {
@@ -71,88 +37,7 @@ function locate()
 	navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
 }
 
-/************* get species / genus *************/
-/*
-function getGenus()
-{
-	//genus = Array("Lasius", "Camponotus", "Formica", "Temnothorax");
-	
-	$.ajax({
-		url: server + "/genuslist",
-		success: function(data) {
-			//it works, do something with the data
-			var genus = data.toString().split(',');
-			
-			var dropdown = document.getElementById('genus');
-			var opt = document.createElement("option");
-			dropdown.options.add(opt);
-			opt.text = "Unbekannt";
-			opt.value = "unknown";
-			
-			for( var i=0; i<genus.length; i++)
-			{
-				opt = document.createElement("option");
-				dropdown.options.add(opt);
-				opt.text = opt.value = genus[i];
-			}
-		},
-		error: function() {
-			//something went wrong, handle the error and display a message
-			alert("Error while loading genus list");
-		}
-	});
 
-}
-*/
-/*
-function getSpecies(genus)
-{	
-	//clear list
-	var dropdown = document.getElementById('species');
-	$("#species").empty();
-	
-
-	if(genus == "unknown")
-		//$('#species').attr("disabled","disabled");
-		//TODO: select size etc.
-		return;
-	
-	//from db
-	
-	$.ajax({
-		url: server + "/specieslist?genus=" + genus,
-		success: function(data) {
-			//it works, do something with the data
-			//alert(data.toString());
-			
-			var opt = document.createElement("option");
-			dropdown.options.add(opt);
-			opt.text = "sp.";
-			opt.value = "sp";
-			
-			for( var i=0; i<data.ants.length; i++)
-			{
-				opt = document.createElement("option");
-				dropdown.options.add(opt);
-				opt.text = data.ants[i].species + "(" + data.ants[i].country + ")";
-				opt.value = data.ants[i].species;
-			}
-		},
-		error: function() {
-			//something went wrong, handle the error and display a message
-			alert("Fehler beim Laden der Artenliste");
-		}
-	});
-//	
-//	switch(genus)
-//	{
-//		case "Camponotus": species = Array("ligniperdus", "herculeanus"); break;
-//		case "Lasius": species = Array("niger", "flavus", "fuliginosus", "emarginatus"); break;
-//		case "Formica": species = Array("fusca", "rufifarbis", "rufa", "polyctena"); break;
-//		default: species = Array();	
-//	}
-}
-*/
 /************* Time ***************************/
 function getCurrentTime(){
 	
@@ -171,24 +56,33 @@ function sumbitData(){
 	//var img = document.getElementById('smallImage');
 	var imageURI = $('#smallImage').attr('src');
 	//alert($('#smallImage').attr('src'));
+	
+	if (imageURI.indexOf('data:image/jpeg;base64') !== -1){
+		alert("Fotoupload noch nicht unterstützt!");
+		$.mobile.hidePageLoadingMsg();
+		return;
+	}
 
 	var options = new FileUploadOptions();
+	
 	if(imageURI != ''){
 		options.fileKey = "file";
-		options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);
+		options.fileName = "image";
 		options.mimeType = "image/jpeg";
 		options.chunkedMode = false;		
 	} else {
+		console.log("no image!");
 		options.fileKey = "file";
 		options.fileName = "";
 		options.mimeType = "";
 		options.chunkedMode = "";
 	}
-	
+		
 	var params = new Object();
 	params.lat = $('#lat').val();
 	params.lon = $('#lon').val();
-	params.datetime = $('#time').val();
+	params.time = $('#time').val();
+	params.date = $('#date').val();
 	params.genus = $('#genus option:selected').val();
 	params.species = $('#species option:selected').val();
 	params.comment = $('#comment').val();
@@ -200,8 +94,9 @@ function sumbitData(){
 	ft.upload(imageURI,
 			url, 
 			function(r){
-				alert("Upload successful: "+r.bytesSent+" bytes uploaded.");
+				alert("Meldung erfolgreich!\n"+r.bytesSent+" bytes gesendet.");
 				$.mobile.hidePageLoadingMsg();
+				$.mobile.navigate("#index");
 			},
 			function(error) {
 				
@@ -211,7 +106,7 @@ function sumbitData(){
 //				case 1:
 //				case 2:
 				case 3: alert("Konnte keine Verbindung zu Server aufbauen. Timeout");
-				default: alert("failed Code: " + error.code + "\n" + error.message);
+				default: alert("Serverfehler " + error.code + "\n" + error.message);
 				
 				}
 				
@@ -231,7 +126,7 @@ function sumbitData(){
 function onPhotoDataSuccess(imageData) {
 	// Uncomment to view the base64 encoded image data
 	console.log("PhotoDataSuccess");
-	console.log("Image: " + imageData);
+	//console.log("Image: " + imageData);
 
 	// Get image handle
 	//
@@ -247,6 +142,7 @@ function onPhotoDataSuccess(imageData) {
 	//
 	smallImage.src = "data:image/jpeg;base64," + imageData;
 	
+	photo = imageData;
 	//scroll to image label
 	$('html, body').animate({scrollTop: $('#lblphoto').offset().top}, 2500);
 }
@@ -271,6 +167,9 @@ function onPhotoURISuccess(imageURI) {
 	//
 	smallImage.src = imageURI;
 	
+	//load data
+	//loadData();
+	
 	//scroll to image label
 	$('html, body').animate({scrollTop: $('#lblphoto').offset().top}, 2500);
 }
@@ -280,6 +179,7 @@ function onPhotoURISuccess(imageURI) {
 function capturePhoto() {
 	// Take picture using device camera and retrieve image as base64-encoded string
 	console.log("Capture Photo");
+	
 	navigator.camera.getPicture(onPhotoDataSuccess, onFail, {
 		quality : 50,
 		destinationType : destinationType.DATA_URL
@@ -301,6 +201,7 @@ function capturePhotoEdit() {
 // A button will call this function
 //
 function getPhoto(source) {
+	
 	// Retrieve image file location from specified source
 	navigator.camera.getPicture(onPhotoURISuccess, onFail, {
 		quality : 50,
@@ -313,5 +214,5 @@ function getPhoto(source) {
 // 
 function onFail(message) {
 	console.log("failed! " + message);
-	alert('Failed because: ' + message);
+	//alert('Failed because: ' + message);
 }

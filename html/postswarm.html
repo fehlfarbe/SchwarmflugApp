@@ -13,7 +13,7 @@
 </head>
 <body>
 
-	<div data-role="page" id="index">
+	<div data-role="page" id="postswarm">
 		<div data-role="header">
 			<h1>Schwarmflug App</h1>
 		</div>
@@ -23,73 +23,56 @@
 				<form name="postswarm" method="post" enctype="multipart/form-data">
 
 					<!-- geolocation -->
-					<label id="lbllat">Breite:</label> <input type="number" id="lat"
-						name="lat" min="-180" max="180" /> <label id="lbllon">Länge:</label>
-					<input type="number" id="lon" name="lon" min="-90" max="90" /> <a
-						href="#" onClick="locate();">Lokalisieren</a>
+					<label for="lat" id="lbllat">Breite:</label>
+					<input type="number" id="lat" name="lat" min="-180" max="180" readonly="readonly" />
+					<label for="lon" id="lbllon">Länge:</label>
+					<input type="number" id="lon" name="lon" min="-90" max="90" readonly="readonly" />
+					<button onClick="locate();">Neu lokalisieren</button>
 					<div id="geomsg"></div>
 
 
 					<!-- datetime -->
-					<label for="date">Date</label>        
-					<input name="date" type="text" data-role="datebox" id="date" 
-					    data-options='{"mode":"calbox"}' />
+					<label for="date">Datum</label>        
+					<input name="date" type="text" data-role="datebox" id="date" readonly="readonly"
+					    data-options='{"mode":"datebox", "useFocus": true, "useButton": false}' />
 					    
-					<label for="time">Time</label>					        
-					<input name="time" type="text" data-role="datebox" id="time"
-					    data-options='{"mode": "timebox", "overrideTimeFormat":24}' />
-					
-					<!-- <label id="lbltime">Zeit:</label> <input type="datetime" id="time"
-						name="time" readonly="readonly" /> -->
-					<!-- <a href="#" onClick="$('#time').click();">K</a>  -->
+					<label for="time">Zeit</label>					        
+					<input name="time" type="text" data-role="datebox" id="time" readonly="readonly"
+					    data-options='{"mode": "timebox", "overrideTimeFormat":24, "useFocus": true, "useButton": false}' />
 
 
 					<!-- genus / species -->
-					<label id="lblgenus">Gattung:</label>
+					<label for="genus">Gattung:</label>
 					<div id="genusdiv">
 						<select id="genus" name="genus" data-role="select" onChange='getSpecies($("#genus").val());'>
 							</select>
 							<!-- <img id="genusload" src="img/antload32.gif" /> -->
 					</div>
-					<label id="lblspecies">Art:</label>
+					<label for="species">Art:</label>
 					<div id="speciesdiv">
 						<select id="species" name="species"  data-role="select"></select>
 						<!-- <img id="speciesload" src="img/antload32.gif" /> -->
 					</div>
 
-
-					<!-- OR description (size...)
-		<label id="lblsize">Gr&ouml;&szlig;e:</label>
-		<input type="text" id="size" name="size" />
-		<label id="lblcolor">Farbe:</label>
-		<input type="text" id="color" name="color" />
-		 -->
-
 					<!-- photo -->
-					<label id="lblphoto">Foto:</label>
+					<label for="photo" id="lblphoto">Foto</label>
 					<!-- <input type="file" name="photo" /> -->
-					<a href="#" onclick="capturePhoto();">Foto aufnehmen</a> <a
-						href="#" onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">Aus
-						Album</a><br /> <img id="smallImage" src=""></img>
+					<button onclick="capturePhoto();">Foto aufnehmen</button>
+					<button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">Aus Album</button>
+					<br /><img id="smallImage" src=""></img>
 
 					<!-- comment -->
-					<label id="lblcomment">Kommentar:</label>
+					<label for="comment">Kommentar</label>
 					<!-- <input type="text" id="comment" name="comment" /> -->
 					<textarea id="comment" name="comment" rows="3" cols="80"></textarea>
 
 
 					<!-- send it -->
-					<input id="submit" type="button" onclick="sumbitData();"
-						value="Melden" />
+					<button id="submit" onclick="sumbitData();">Melden</button>
 				</form>
 			</div>
 
 		</div>
-		<!-- /content -->
-<!-- 		<div data-role="footer">
-			<h4>Fußzeile</h4>
-		</div> -->
-		<!-- /footer -->
 	</div>
 	<!-- /page -->
 </body>

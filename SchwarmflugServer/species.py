@@ -54,6 +54,27 @@ def getSpecies(findgenus, file = 'artenliste.txt'):
             
         
         return {"ants" : antlist}
+    
+def speciesArray(file = 'artenliste.txt'):
+
+    with open(file, 'r') as csvfile:
+        
+        csvreader = csv.reader(csvfile, delimiter='\t', quotechar='|')
+        antlist = []
+        for row in csvreader:
+            ant = row[0].split(' ')
+            genus = ant[0]
+            species = ant[1]
+            country = row[4]
+            state = row[5]
+            
+            
+            antlist.append({'genus': genus, 
+                            'species' : species, 
+                            'country' : country, 
+                            'state' : state})
+            
+    return antlist 
 
 
 def speciesFromFile(file = 'artenliste.txt'):

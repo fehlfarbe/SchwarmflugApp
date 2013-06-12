@@ -23,16 +23,15 @@ function updateSpeciesDB(){
 				function(err){alert("Fehler beim Erstellen der Tabelle! " + err.message);},
 				function(){
 					alert("Artenliste erfolgreich aktualisiert!");
-					$('#loading').css("display", "none");
 					getGenusList();
 				}
 			);
 		},
-		error: function(e) {
+		error: function (xhRequest, ErrorText, thrownError) {
 			// something went wrong, handle the error and
 			// display a message
-			alert("Fehler beim Laden der Artenliste " + e.message);
-			$('#loading').css("display", "none");
+			alert("Fehler beim Laden der Artenliste " + xhRequest.status + " "+ xhRequest.responseText);
+			//$('#loading').css("display", "none");
 			//$('#loadingmsg').html("Artenliste wird aktualisiert...")
 		}
 	});
@@ -49,9 +48,6 @@ function testSpeciesDB(){
 							//alert(results.rows.length);
 							
 							if(results.rows.length <= 0){
-								//alert("Artenliste wird aktualisiert...");
-								$('#loading').css("display", "block");
-								$('#loadingmsg').html("Artenliste wird aktualisiert...");
 								updateSpeciesDB();
 							}
 							else{
@@ -59,10 +55,6 @@ function testSpeciesDB(){
 							}
 						},
 						function(err){
-							//alert("Fehler bei Aktualisierung " + err.message);
-							//alert("Artenliste wird aktualisiert...");
-							$('#loading').css("display", "block");
-							$('#loadingmsg').html("Artenliste wird aktualisiert...")
 							updateSpeciesDB();
 						});
 			}, 
@@ -84,7 +76,7 @@ function genusQuerySuccess(tx, results) {
 
     for (var i=0; i<results.rows.length; i++){
     	$('#genus').append('<option value="'+results.rows.item(i).genus+'">'+results.rows.item(i).genus+'</option>');
-        console.log('<option value="'+results.rows.item(i).genus+'">'+results.rows.item(i).genus+'</option>');
+        //console.log('<option value="'+results.rows.item(i).genus+'">'+results.rows.item(i).genus+'</option>');
     }
     $('#genus').selectmenu('refresh', true);
 }

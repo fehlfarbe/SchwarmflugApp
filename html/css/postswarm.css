@@ -38,6 +38,7 @@ div#form a
 	/*width: 100%;*/
 }
 
+/*
 div#form #lbllat,
 div#form #lat,
 div#form #lbllon,
@@ -49,6 +50,7 @@ div#form #color
 {
 	display:none;
 }
+*/
 
 #geolocation
 {
