@@ -84,7 +84,7 @@ function sumbitData(){
 	params.time = $('#time').val();
 	params.date = $('#date').val();
 	params.genus = $('#genus option:selected').val();
-	params.species = $('#species option:selected').val();
+	params.species = $('#species option:selected').val() || "";
 	params.comment = $('#comment').val();
 	
 	options.params = params;

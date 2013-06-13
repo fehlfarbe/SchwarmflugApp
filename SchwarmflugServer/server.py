@@ -38,9 +38,10 @@ def index():
     res = ""
     
     for swarm in swarmlist:
-        res += "<h2>Schwarm " + str(swarm['id']) +"</h2><br /> \
-                " + swarm['genus'] + " " + swarm['species'] + " <br />\
-                " + swarm['comment'] + " <br /> \
+        res += "<h2>Schwarm " + str(swarm['id']) + "</h2> \
+                <b>Zeit:</b> " + str(swarm['date']) + "<br /> \
+                <b>Art:</b> " + swarm['genus'] + " " + swarm['species'] + " <br />\
+                <b>Kommentar:</b> " + swarm['comment'] + " <br /> \
                 <img src=\"uploads/" + swarm['image'] + "\" />"
     
     return Response(res)
@@ -51,9 +52,12 @@ def index():
 @app.route('/swarmlist', methods=['GET', 'POST'])
 def swarmlist():
     
-    lat = float(request.args.get('lat'))
-    lon = float(request.args.get('lon'))
-    radius = float(request.args.get('radius'))
+    try:
+        lat = float(request.args.get('lat'))
+        lon = float(request.args.get('lon'))
+        radius = float(request.args.get('radius'))
+    except:
+        lat = lon = radius = None
     
     sys.stderr.write(str(lat) + " " + str(lon) + " " + str(radius) + "\n")
     if lat != None and lon != None and radius != None:
@@ -62,6 +66,7 @@ def swarmlist():
         swarmlist = dbhandler.swarmList()
     
     if swarmlist != None:
+        sys.stderr.write("Got " + str(len(swarmlist)) + " swarms!\n")
         jsonstr = ""
         for swarm in swarmlist:
             jsonstr += json.dumps(swarm) + "\n"            
@@ -85,7 +90,6 @@ def newswarm():
     if request.method == 'POST':
         ### POST new swarm into DB
         sys.stderr.write("POST\n")
-        sys.stderr.write(str(request)+"\n")      
         sys.stderr.write(str(request.form)+"\n")      
         
         # picture
@@ -93,7 +97,7 @@ def newswarm():
         upload = request.files['file']
         filename = ""
         if upload:
-            sys.stderr.write("Photo\n")
+            sys.stderr.write("Photo!\n")
             filename = secure_filename(upload.filename)
             filename = str(time.time())+filename+".jpg"
             upload.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))

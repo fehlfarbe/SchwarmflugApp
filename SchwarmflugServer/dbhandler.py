@@ -12,6 +12,25 @@ import math
 ### Settings
 dbname = "antbase.db"
 
+''' calculates the distance between two points on earth '''
+def getDistance(p1, p2):
+    lat1 = p1[0]
+    lon1 = p1[1]
+    lat2 = p2[0]
+    lon2 = p2[1]
+    
+    R = 6371
+    dLat = math.radians(lat2-lat1)
+    dLon = math.radians(lon2-lon1)
+    lat1 = math.radians(lat1)
+    lat2 = math.radians(lat2)
+    
+    a = math.sin(dLat/2) * math.sin(dLat/2) + \
+      math.sin(dLon/2) * math.sin(dLon/2) * math.cos(lat1) * math.cos(lat2); 
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a)); 
+    
+    return R * c;
+
 ''' Fill DB if empty '''
 def fillDB():
     
@@ -115,32 +134,36 @@ def swarmList(position = None, radius = None):
     
     with con:
         cur = con.cursor()
-        
-        if position == None or radius == None:
-            data = cur.execute("SELECT * FROM swarms")
-        else:
-            
-            ### ToDo calculate radius in degree
-            #degree = math.cos(radius / 6378.388)
-            
-            data = cur.execute("SELECT * FROM swarms WHERE\
-            lat > " + str(position[0] - radius) + " AND \
-            lat < " + str(position[0] + radius) + " AND \
-            lon > " + str(position[1] - radius) + " AND \
-            lon < " + str(position[1] + radius))
-            
+        data = cur.execute("SELECT * FROM swarms")
         rows = cur.fetchall()
         
         swarms = []
         for row in rows:
-            sys.stderr.write(str(row) + "\n")
-            swarms.append({"id" : row[0],
-                           "position" : [row[1], row[2]],
-                           "date" : row[3],
-                           "genus" : row[4],
-                           "species" : row[5],
-                           "image" : row[6],
-                           "comment" : row[7]})
+            distance = 0
+            
+            if position != None and radius != None:
+                distance = getDistance(position, [row[1], row[2]])
+                
+            swarm = {"id" : row[0],
+                   "position" : [row[1], row[2]],
+                   "date" : row[3],
+                   "genus" : row[4],
+                   "species" : row[5],
+                   "image" : row[6],
+                   "comment" : row[7],
+                   "distance" : distance}
+            
+            if radius != None:
+                if distance < radius:
+                    swarms.append(swarm)
+                else:
+                    sys.stderr.write("distance too big! " + str(distance) + "km \n")
+            else:
+                swarms.append(swarm)                
+                    
+                    
+            #sys.stderr.write(str(swarm) + "\n")
+                
             
         return swarms
             
