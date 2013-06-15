@@ -4,7 +4,7 @@ var prevPage = undefined;
 function onDeviceReady() {
 	
 	//Test
-	$.mobile.defaultPageTransition="none"
+	$.mobile.defaultPageTransition="none";
 
 	$(document).bind('pagechange', function(event) {
 
@@ -41,6 +41,7 @@ function onDeviceReady() {
 		else if (attr.indexOf('swarmmap.html') !== -1) {
 			//do swarmmap init stuff
 			loadGoogleMaps();
+			//getSwarms();
 		}
 		
 		prevPage = attr;

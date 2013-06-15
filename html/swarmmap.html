@@ -17,7 +17,29 @@
 		<!-- /header -->
 		<div data-role="content">
 			<div id="map_canvas"></div>
-			Legende
+			
+			<div id="swarm_options">
+				<h3>Suchoptionen</h3>
+				<p>
+					<label for="umkreis">Suche auf Umgebung beschränken:</label>
+					<select name="umkreis" size="1" onchange="onAmbitChange(this.value);">
+						<option selected>(ohne)</option>
+						<option>5 km</option>
+						<option>10 km</option>
+						<option>20 km</option>
+						<option>50 km</option>
+						<option>100 km</option>
+					</select>
+					
+					<label for="zeitwahl">Suche auf Zeitintervall beschränken:</label>
+					<select name="zeitwahl" size="1" onchange="onTimeChange(this.value);">
+						<option>1 Tag</option>
+						<option>3 Tage</option>
+						<option>1 Woche</option>
+						<option selected>1 Monat</option>
+					</select>
+				</p>
+			</div>
 		</div>
 		
 	</div>	
