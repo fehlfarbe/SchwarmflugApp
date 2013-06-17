@@ -20,25 +20,39 @@
 			
 			<div id="swarm_options">
 				<h3>Suchoptionen</h3>
-				<p>
-					<label for="umkreis">Suche auf Umgebung beschränken:</label>
-					<select name="umkreis" size="1" onchange="onAmbitChange(this.value);">
-						<option selected>(ohne)</option>
-						<option>5 km</option>
-						<option>10 km</option>
-						<option>20 km</option>
-						<option>50 km</option>
-						<option>100 km</option>
-					</select>
-					
-					<label for="zeitwahl">Suche auf Zeitintervall beschränken:</label>
-					<select name="zeitwahl" size="1" onchange="onTimeChange(this.value);">
-						<option>1 Tag</option>
-						<option>3 Tage</option>
-						<option>1 Woche</option>
-						<option selected>1 Monat</option>
-					</select>
-				</p>
+				
+				<label for="umkreis">Suche auf <span class="suchkrit">Umgebung</span> beschränken:</label>
+				<select name="umkreis" size="1" onchange="onAmbitChange(this.value);">
+					<option selected>(ohne)</option>
+					<option>5 km</option>
+					<option>10 km</option>
+					<option>20 km</option>
+					<option>50 km</option>
+					<option>100 km</option>
+				</select>
+				
+				<label for="zeitwahl">Suche auf <span class="suchkrit">Zeitintervall</span> beschränken:</label>
+				<select name="zeitwahl" size="1" onchange="onTimeChange(this.value);">
+					<option>1 Tag</option>
+					<option>3 Tage</option>
+					<option>1 Woche</option>
+					<option selected>1 Monat</option>
+				</select>
+				
+				<label for="genuswahl">Suche auf <span class="suchkrit">Gattung</span> beschränken:</label>
+				<select id="genuswahl" name="genuswahl" size="1" onchange="onGenusChange(this.value);">
+					<option selected>(alle)</option>
+				</select>
+				
+				<label for="specieswahl">Suche auf <span class="suchkrit">Art</span> beschränken:</label>
+				<select id="specieswahl" name="specieswahl" size="1" onchange="onSpeciesChange(this.value);">
+					<option selected>(alle)</option>
+				</select>
+			</div>
+			<div id="suche_fail">
+				<h3>Gesuchte Art nicht gefunden?</h3>
+				Lass dich benachrichtigen, sobald sie gemeldet wurde!<br/>
+				Weiter
 			</div>
 		</div>
 		

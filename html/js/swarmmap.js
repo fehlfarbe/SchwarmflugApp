@@ -8,6 +8,8 @@ var swarmdata;		//
 var mIconSwarm;		// icon for marker
 var mradius = 1000;
 var mtime = 31;
+var mgenus = '(alle)';
+var mspecies = '(alle)';
 
 function loadGoogleMaps() {
 	
@@ -36,6 +38,7 @@ function loadGoogleMaps() {
 		mIconSwarm = new google.maps.MarkerImage('img/antmarker.png', new google.maps.Size(64,64), null, new google.maps.Point(32,32));
 		
 		getSwarms();
+		getGenuswahlList();
 		
 	} catch(e) {
 		console.log('error occured with google maps' + e);
@@ -66,6 +69,11 @@ function addSwarmMarker(swarm, micon) {
 	var tswarm = new Date(swarm.date);
 	var tdiff = parseInt((tuser.getTime() - tswarm.getTime())/(24*3600*1000)) + 1;
 	if(tdiff > mtime) return;
+	
+	// Gattung
+	if(mgenus != '(alle)' && swarm.genus != mgenus) return;
+	// Art
+	if(mspecies != '(alle)' && swarm.species != mgenus) return;
 	
 	var mark = $('#map_canvas').gmap('addMarker', {
 		'position': new google.maps.LatLng(swarm.position[0], swarm.position[1]),
@@ -112,10 +120,14 @@ function runde(x, n) {
 	return k.substring(0, k.indexOf('.') + n+1);
 }
 
-function onAmbitChange(value) {
-	console.log('onAmbitChange called with value = ' + value);
+function clearMarkers() {
 	$('#map_canvas').gmap('clear', 'markers');
 	addUserMarker();
+}
+
+function onAmbitChange(value) {
+	console.log('onAmbitChange called with value = ' + value);
+	clearMarkers();
 	
 	var radius = value.split(' ');
 	//isNumber?
@@ -126,8 +138,7 @@ function onAmbitChange(value) {
 
 function onTimeChange(value) {
 	console.log('onTimeChange called with value = ' + value);
-	$('#map_canvas').gmap('clear', 'markers');
-	addUserMarker();
+	clearMarkers();
 	
 	switch(value) {
 	case '1 Tag': mtime = 1; break;
@@ -135,5 +146,76 @@ function onTimeChange(value) {
 	case '1 Woche': mtime = 7; break;
 	case '1 Monat': mtime = 31; break;
 	}
+	addMarkers();
+}
+
+/************* Get genus list *********/
+function genuswahlQuerySuccess(tx, results) {
+	
+	console.log("getGenusList success!");
+	//$('#genus').append('<option value="unknown">Unbekannt</option>');
+
+    for (var i=0; i<results.rows.length; i++){
+    	$('#genuswahl').append('<option value="'+results.rows.item(i).genus+'">'+results.rows.item(i).genus+'</option>');
+    }
+    $('#genuswahl').selectmenu('refresh', true);
+}
+
+function genuswahlQueryDB(tx) {
+	tx.executeSql('SELECT genus FROM species GROUP BY genus', 
+			[], 
+			genuswahlQuerySuccess, 
+			genusErrorCB);		// --> error function in species.js
+}
+
+function getGenuswahlList(){
+	var db = window.openDatabase(dbName, dbVers, dbDisplayName, dbSize);
+	db.transaction(genuswahlQueryDB, genusErrorCB);		// --> error function in species.js
+}
+
+function onGenusChange(genus) {
+	console.log('onGenusChanged called with value = '+genus);
+
+	$("#specieswahl").empty();
+	$('#specieswahl').append('<option value="sp">(alle)</option>');
+	$('#specieswahl').selectmenu('refresh', true);
+	
+	mgenus = genus;
+		
+	if(mgenus == '(alle)') {
+		mspecies = '(alle)';
+		clearMarkers();
+		addMarkers();
+		return;
+	}
+	
+	var db = window.openDatabase(dbName, dbVers, dbDisplayName, dbSize);
+	db.transaction(
+			function(tx){
+				tx.executeSql('SELECT species FROM species WHERE genus LIKE "'+genus+'"', 
+						[], 
+						function(tx, results){							
+						    for (var i=0; i<results.rows.length; i++){
+						    	$('#specieswahl').append('<option value="'+results.rows.item(i).species+'">'+results.rows.item(i).species+'</option>');
+						    }
+						    $('#specieswahl').selectmenu('refresh', true);
+				},
+						function(err){
+							alert("Fehler bei Aktualisierung " + err.message);
+						});
+			}, 
+			function(err){
+				alert("Fehler bei Aktualisierung " + err.message);
+			});
+	
+	clearMarkers();
+	addMarkers();
+}
+
+function onSpeciesChange(species) {
+	console.log('onSpeciesChanged called with value = '+species);
+	
+	mspecies = species;
+	clearMarkers();
 	addMarkers();
 }
