@@ -6,6 +6,8 @@ dbSize = 65536; //bytes
 
 function updateSpeciesDB(){
 	
+	$.mobile.showPageLoadingMsg("a", "Aktualisiere Artenliste...", true);
+	
 	$.ajax({
 		url: server + "/fullspecieslist",
 		success: function(data) {
@@ -20,10 +22,14 @@ function updateSpeciesDB(){
 					for( var i=0; i<data.ants.length; i++)
 						tx.executeSql('INSERT INTO species (id, genus, species, country) VALUES ('+i+', "'+data.ants[i].genus+'", "'+data.ants[i].species+'", "'+data.ants[i].country+'")');
 				},
-				function(err){alert("Fehler beim Erstellen der Tabelle! " + err.message);},
+				function(err){
+					alert("Fehler beim Erstellen der Tabelle! " + err.message);
+					$.mobile.hidePageLoadingMsg();
+				},
 				function(){
 					alert("Artenliste erfolgreich aktualisiert!");
 					getGenusList();
+					$.mobile.hidePageLoadingMsg();
 				}
 			);
 		},
@@ -31,8 +37,7 @@ function updateSpeciesDB(){
 			// something went wrong, handle the error and
 			// display a message
 			alert("Fehler beim Laden der Artenliste " + xhRequest.status + " "+ xhRequest.responseText);
-			//$('#loading').css("display", "none");
-			//$('#loadingmsg').html("Artenliste wird aktualisiert...")
+			$.mobile.hidePageLoadingMsg();
 		}
 	});
 }

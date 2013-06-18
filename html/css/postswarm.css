@@ -47,10 +47,12 @@ div#form #lblsize,
 div#form #size,
 div#form #lblcolor,
 div#form #color
+*/
+div#form #geomsg
 {
 	display:none;
 }
-*/
+
 
 #geolocation
 {

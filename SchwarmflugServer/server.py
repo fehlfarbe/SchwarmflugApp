@@ -12,10 +12,11 @@ import os, sys, time
 from flask import Flask, render_template, request, abort, json, jsonify, make_response, redirect, url_for, Response
 from werkzeug import secure_filename
 import dbhandler
+from base64 import decodestring
 
 # Configuration
 UPLOAD_FOLDER = './uploads'
-ALLOWED_EXTENSIONS = set(['jpg', 'jpeg', 'gif', ''])
+ALLOWED_EXTENSIONS = set(['jpg', 'jpeg', 'gif'])
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -24,6 +25,14 @@ app.config.from_object(__name__)
 
 con = None
 
+def getPostData(request, key):
+    try:
+        ret = request.form[key]
+    except:
+        ret = ''
+        
+    return ret
+        
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
@@ -90,25 +99,52 @@ def newswarm():
     if request.method == 'POST':
         ### POST new swarm into DB
         sys.stderr.write("POST\n")
-        sys.stderr.write(str(request.form)+"\n")      
+        sys.stderr.write(str(request.form)+"\n")
+        
+        
+        ### get form data
+        comment = getPostData(request, 'comment')
+        date = getPostData(request, 'date')
+        timedata = getPostData(request, 'time')
+        lat = getPostData(request, 'lat')
+        lon = getPostData(request, 'lon')
+        genus = getPostData(request, 'genus')
+        species = getPostData(request, 'species')
+        photo = getPostData(request, 'photo')
+        
+        try:
+            upload = request.files['file']
+            #sys.stderr.write("FILE: " + str(request.files['file'])+"\n") 
+        except:
+            upload = None                
         
         # picture
-        sys.stderr.write("FILE: " + str(request.files['file'])+"\n")  
-        upload = request.files['file']
         filename = ""
-        if upload:
+        if upload != None and upload.filename != '':
             sys.stderr.write("Photo!\n")
             filename = secure_filename(upload.filename)
             filename = str(time.time())+filename+".jpg"
             upload.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             #return redirect(url_for('uploaded_file', filename=filename))
+        elif photo != '':
+            if 'base64' in photo:
+                sys.stderr.write("Photo base64 encoded!\n")
+                imgData = photo.rsplit(';base64,', 2)
+                imgType = imgData[0].rsplit('/')
+                filename = str(time.time()) + "." + str(imgType[1])
+                with open(os.path.join(app.config['UPLOAD_FOLDER'], filename),"wb") as f:
+                    f.write(decodestring(imgData[1]))
+            else:
+                sys.stderr.write("Wrong filetype? " + str(photo) + "\n")
         
-        dbhandler.newSwarm([request.form['lat'], request.form['lon']], 
-                           str(request.form['date']) + " " + str(request.form['time']),
-                           request.form['genus'],
-                           request.form['species'],
+        ### save swarm in DB
+        sys.stderr.write("Write to DB!\n")
+        dbhandler.newSwarm([lat, lon], 
+                           str(date) + " " + str(timedata),
+                           genus,
+                           species,
                            filename,
-                           request.form['comment'])
+                           comment)
     else:
         sys.stderr.write(str(request.method))
     

@@ -3,8 +3,10 @@ var prevPage = undefined;
 
 function onDeviceReady() {
 	
-	//Test
+	//JQM Settings
 	$.mobile.defaultPageTransition="none";
+	$.mobile.loadingMessageTextVisible = true;
+
 
 	$(document).bind('pagechange', function(event) {
 

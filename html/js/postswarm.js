@@ -24,16 +24,29 @@ var onGeoSuccess = function(position) {
 	
 	$("#geomsg").html("Breite: " + $('#lat').val() + "<br />"
 			+ "Länge: " + $('#lon').val() );
+	
+	$.mobile.hidePageLoadingMsg();
 };
 
 
 function onGeoError(error) {
 	$("#geomsg").html("Fehler " + error.code + "<br />" + error.message);
+	
+	switch(error.code){
+	case 2:
+		alert("Standort kann nicht ermittelt werden. Überprüfen Sie Ihre Lokalisierungseinstellungen und -berechtigungen");
+		break;
+	default:
+		alert("Unbekannter Fehler bei Lokalisation (Code " + error.code + ", Beschreibung: " + error.message);
+	}
+	
+	$.mobile.hidePageLoadingMsg();
 }
 
 function locate()
 {
-	$("#geomsg").html('<img src="img/antload32.gif" />');
+	//$("#geomsg").html('<img src="img/antload32.gif" />');
+	$.mobile.showPageLoadingMsg("a", "Lokalisiere Standort...", true);
 	navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
 }
 
@@ -49,7 +62,7 @@ function getCurrentTime(){
 /************* Submit data ********************/
 function sumbitData(){
 	
-	$.mobile.showPageLoadingMsg("Übermittle Daten...");
+	$.mobile.showPageLoadingMsg("a", "Übermittle Daten", true);
 	
 	url = server + "/newswarm";
 	
@@ -57,27 +70,13 @@ function sumbitData(){
 	var imageURI = $('#smallImage').attr('src');
 	//alert($('#smallImage').attr('src'));
 	
-	if (imageURI.indexOf('data:image/jpeg;base64') !== -1){
-		alert("Fotoupload noch nicht unterstützt!");
-		$.mobile.hidePageLoadingMsg();
-		return;
-	}
+//	if (imageURI.indexOf('data:image/jpeg;base64') !== -1){
+//		alert("Fotoupload noch nicht unterstützt!");
+//		$.mobile.hidePageLoadingMsg();
+//		return;
+//	}
 
 	var options = new FileUploadOptions();
-	
-	if(imageURI != ''){
-		options.fileKey = "file";
-		options.fileName = "image";
-		options.mimeType = "image/jpeg";
-		options.chunkedMode = false;		
-	} else {
-		console.log("no image!");
-		options.fileKey = "file";
-		options.fileName = "";
-		options.mimeType = "";
-		options.chunkedMode = "";
-	}
-		
 	var params = new Object();
 	params.lat = $('#lat').val();
 	params.lon = $('#lon').val();
@@ -87,6 +86,27 @@ function sumbitData(){
 	params.species = $('#species option:selected').val() || "";
 	params.comment = $('#comment').val();
 	
+	//image
+	options.fileKey = "file";
+	options.fileName = "";
+	options.mimeType = "";
+	options.chunkedMode = "";
+	
+	if(imageURI != ''){
+		if (imageURI.indexOf('data:image/jpeg;base64') !== -1){
+			params.photo = imageURI;
+			imageURI = "";
+		} else {
+			options.fileKey = "file";
+			options.fileName = "image";
+			options.mimeType = "image/jpeg";
+			options.chunkedMode = false;			
+		}
+	} else {
+		console.log("no image!");
+	}
+
+	
 	options.params = params;
 
 	// Transfer picture to server
@@ -94,7 +114,8 @@ function sumbitData(){
 	ft.upload(imageURI,
 			url, 
 			function(r){
-				alert("Meldung erfolgreich!\n"+r.bytesSent+" bytes gesendet.");
+				alert("Meldung erfolgreich!\n");
+						//+r.bytesSent+" bytes gesendet.");
 				$.mobile.hidePageLoadingMsg();
 				$.mobile.navigate("#index");
 			},
@@ -103,9 +124,9 @@ function sumbitData(){
 				switch(error.code)
 				{
 //				case 0:
-//				case 1:
+				case 1: alert("Server oder Netzwerk nicht erreichbar!"); break;
 //				case 2:
-				case 3: alert("Konnte keine Verbindung zu Server aufbauen. Timeout");
+				case 3: alert("Konnte keine Verbindung zu Server aufbauen. Timeout"); break;
 				default: alert("Serverfehler " + error.code + "\n" + error.message);
 				
 				}
