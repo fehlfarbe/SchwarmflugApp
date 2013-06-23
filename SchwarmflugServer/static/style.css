@@ -1,0 +1,18 @@
+@CHARSET "UTF-8";
+
+body{
+	background-color: #292;
+}
+
+div.swarm{
+	width: 300px;
+	background-color: #dfa;
+	margin: 10px;
+	padding: 5px;
+	/*float:left;*/
+	border: 1px dashed #000;	
+}
+
+div.swarm img{
+	max-width: 250px;
+}

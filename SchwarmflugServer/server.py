@@ -15,7 +15,7 @@ import dbhandler
 from base64 import decodestring
 
 # Configuration
-UPLOAD_FOLDER = './uploads'
+UPLOAD_FOLDER = './static/uploads'
 ALLOWED_EXTENSIONS = set(['jpg', 'jpeg', 'gif'])
 
 app = Flask(__name__)
