@@ -129,12 +129,40 @@ def newSwarm(position, datetime, genus, species, image, comment):
             
     swarmList()
             
-def swarmList(position = None, radius = None):
+def swarmList(position = None, radius = None, genus = None, species = None, startdate = None):
     con = sql.connect(dbname)
     
     with con:
+        query = "SELECT * FROM swarms"
+        
+        where = []
+        params = {}
+        if genus != None:
+            where.append("genus = :genus")
+            params['genus'] = genus
+            if species != None:
+                where.append("species = :species")
+                params['species'] = species
+        if startdate != None:
+            where.append("date > :startdate")
+            params['startdate'] = startdate
+        if where:
+            query = '{} WHERE {}'.format(query, ' AND '.join(where))
+        
+        '''
+        if genus != None or startdate != None:
+            query += "WHERE "
+        if genus != None:
+            query += "genus LIKE '" + genus + "' "
+        if species != None:
+            query += " AND species LIKE '" + species + "' "
+        if startdate != None:
+            query += " AND date > '" + startdate + "' "
+        '''
+        
+        sys.stderr.write(str(query)+ "\n")
         cur = con.cursor()
-        data = cur.execute("SELECT * FROM swarms")
+        data = cur.execute(query, params)
         rows = cur.fetchall()
         
         swarms = []

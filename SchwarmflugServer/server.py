@@ -32,6 +32,12 @@ def getPostData(request, key):
         ret = ''
         
     return ret
+
+def getArg(request, key):
+    try:
+        return request.args.get(key)
+    except:
+        return None
         
 
 def allowed_file(filename):
@@ -43,6 +49,10 @@ def allowed_file(filename):
 def index():
     
     swarmlist = dbhandler.swarmList()
+    
+    return render_template('index.html', swarmlist=swarmlist)
+    
+    
     
     res = ""
     
@@ -62,17 +72,16 @@ def index():
 def swarmlist():
     
     try:
-        lat = float(request.args.get('lat'))
-        lon = float(request.args.get('lon'))
-        radius = float(request.args.get('radius'))
+        lat = float(getArg(request, 'lat'))
+        lon = float(getArg(request, 'lon'))
+        radius = float(getArg(request, 'radius'))
     except:
         lat = lon = radius = None
+    genus = getArg(request, 'genus')
+    species = getArg(request, 'species')
+    startdate = getArg(request, 'startdate')        
     
-    sys.stderr.write(str(lat) + " " + str(lon) + " " + str(radius) + "\n")
-    if lat != None and lon != None and radius != None:
-        swarmlist = dbhandler.swarmList([lat, lon], radius)
-    else:
-        swarmlist = dbhandler.swarmList()
+    swarmlist = dbhandler.swarmList([lat, lon], radius, genus, species, startdate)
     
     if swarmlist != None:
         sys.stderr.write("Got " + str(len(swarmlist)) + " swarms!\n")
@@ -155,4 +164,4 @@ def newswarm():
 if __name__ == '__main__':
    
     dbhandler.fillDB()
-    app.run(host="192.168.100.28", port=5000)    
+    app.run(host="0.0.0.0", port=5000)    
