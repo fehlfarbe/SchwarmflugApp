@@ -5,7 +5,11 @@ function onDeviceReady() {
 	
 	//JQM Settings
 	$.mobile.defaultPageTransition="none";
+	
+	$.mobile.page.prototype.options.addBackBtn = true;
+	//$.mobile.page.prototype.options.backBtnText = " ";
 	$.mobile.loadingMessageTextVisible = true;
+	
 
 
 	$(document).bind('pagechange', function(event) {

@@ -12,8 +12,7 @@ import os, sys, time
 from flask import Flask, render_template, request, abort, json, jsonify, make_response, redirect, url_for, Response
 from werkzeug import secure_filename
 import dbhandler
-from base64 import decodestring
-
+import base64
 # Configuration
 UPLOAD_FOLDER = './static/uploads'
 ALLOWED_EXTENSIONS = set(['jpg', 'jpeg', 'gif'])
@@ -79,14 +78,28 @@ def swarmlist():
         lat = lon = radius = None
     genus = getArg(request, 'genus')
     species = getArg(request, 'species')
-    startdate = getArg(request, 'startdate')        
+    startdate = getArg(request, 'startdate')
+    limit = getArg(request, 'limit')  
     
-    swarmlist = dbhandler.swarmList([lat, lon], radius, genus, species, startdate)
+    swarmlist = dbhandler.swarmList([lat, lon], radius, genus, species, startdate, limit)
     
     if swarmlist != None:
         sys.stderr.write("Got " + str(len(swarmlist)) + " swarms!\n")
+        
+        
+        
         jsonstr = ""
         for swarm in swarmlist:
+            ###convert pics to base64 string
+            if swarm['image'] != None:
+                try:
+                    with open(UPLOAD_FOLDER + str(swarm['image'], "rb")) as image_file:
+                        imgstring = base64.b64encode(image_file.read())
+                        swarm['image'] = imgstring;
+                        sys.stderr.write("Imagestring: " + str(imgstring) + "\n")
+                except:
+                    sys.stderr.write("Image " + str(swarm['image']) + " doesnt exist\n")
+            
             jsonstr += json.dumps(swarm) + "\n"            
         
         return Response(json.dumps({"swarms" : swarmlist}), mimetype='application/json')
@@ -142,7 +155,7 @@ def newswarm():
                 imgType = imgData[0].rsplit('/')
                 filename = str(time.time()) + "." + str(imgType[1])
                 with open(os.path.join(app.config['UPLOAD_FOLDER'], filename),"wb") as f:
-                    f.write(decodestring(imgData[1]))
+                    f.write(base64.decodestring(imgData[1]))
             else:
                 sys.stderr.write("Wrong filetype? " + str(photo) + "\n")
         

@@ -101,8 +101,8 @@ def fillDB():
 def newSwarm(position, datetime, genus, species, image, comment):
     
     ''' DEBUG '''
-    position[0] = 0
-    position[1] = 0
+    #position[0] = 0
+    #position[1] = 0
     
     con = sql.connect(dbname)
     
@@ -129,7 +129,7 @@ def newSwarm(position, datetime, genus, species, image, comment):
             
     swarmList()
             
-def swarmList(position = None, radius = None, genus = None, species = None, startdate = None):
+def swarmList(position = None, radius = None, genus = None, species = None, startdate = None, limit = None):
     con = sql.connect(dbname)
     
     with con:
@@ -148,6 +148,8 @@ def swarmList(position = None, radius = None, genus = None, species = None, star
             params['startdate'] = startdate
         if where:
             query = '{} WHERE {}'.format(query, ' AND '.join(where))
+        if limit:
+            query += " LIMIT " + str(limit)
         
         '''
         if genus != None or startdate != None:
