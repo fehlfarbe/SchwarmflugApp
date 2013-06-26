@@ -6,8 +6,8 @@ dbSize = 65536; //bytes
 
 function updateSpeciesDB(){
 	
-	$.mobile.showPageLoadingMsg("a", "Aktualisiere Artenliste...", true);
-	$.blockUI(); 
+	$.mobile.showPageLoadingMsg("a", "Aktualisiere Artenliste...", false);
+	$.blockUI({message: null});
 	
 	$.ajax({
 		url: server + "/fullspecieslist",

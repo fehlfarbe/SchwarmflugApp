@@ -4,7 +4,8 @@ var prevPage = undefined;
 function onDeviceReady() {
 	
 	//hide splash
-	cordova.exec(null, null, "SplashScreen", "hide", []); 
+	//cordova.exec(null, null, "SplashScreen", "hide", []);
+	navigator.splashscreen.hide();
 	
 	//JQM Settings
 	$.mobile.defaultPageTransition="none";
@@ -13,12 +14,7 @@ function onDeviceReady() {
 	//$.mobile.page.prototype.options.backBtnText = " ";
 	
 	$.mobile.loadingMessageTextVisible = true;
-	$.blockUI.defaults = { 
-		    message:  null,
-		    title: null,        // title string; only used when theme == true 
-		    draggable: false,    // only used when theme == true (requires jquery-ui.js to be loaded) 
-		    theme: false
-	};
+	$.unblockUI();
 
 
 	$(document).bind('pagechange', function(event) {

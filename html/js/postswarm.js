@@ -48,8 +48,8 @@ function onGeoError(error) {
 function locate()
 {
 	//$("#geomsg").html('<img src="img/antload32.gif" />');
-	$.mobile.showPageLoadingMsg("a", "Lokalisiere Standort...", true);
-	$.blockUI(); 
+	$.mobile.showPageLoadingMsg("a", 'Bestimme Standort...', false);
+	$.blockUI({message: null}); 
 	navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
 }
 
@@ -65,20 +65,17 @@ function getCurrentTime(){
 /************* Submit data ********************/
 function sumbitData(){
 	
-	$.mobile.showPageLoadingMsg("a", "Übermittle Daten", true);
-	$.blockUI(); 
+	if( $('#lat').val() == '' || $('#lon').val() == ''){
+		alert("Unbekannte Position! Melden nicht möglich.");
+		return;
+	}
+	
+	$.mobile.showPageLoadingMsg("a", "Übermittle Daten", false);
+	$.blockUI({message: null}); 
 	
 	url = server + "/newswarm";
-	
-	//var img = document.getElementById('smallImage');
 	var imageURI = $('#smallImage').attr('src');
-	//alert($('#smallImage').attr('src'));
-	
-//	if (imageURI.indexOf('data:image/jpeg;base64') !== -1){
-//		alert("Fotoupload noch nicht unterstützt!");
-//		$.mobile.hidePageLoadingMsg();
-//		return;
-//	}
+
 
 	var options = new FileUploadOptions();
 	var params = new Object();
