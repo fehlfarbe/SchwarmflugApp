@@ -1,7 +1,7 @@
 @CHARSET "UTF-8";
 
 body{
-	background: #598f44;
+	background: url(../img/background.png) repeat-x #598f44;
 	color: #000;
 	font: 10pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
 	/*padding: 10px;*/
