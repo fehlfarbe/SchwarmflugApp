@@ -3,6 +3,9 @@ var prevPage = undefined;
 
 function onDeviceReady() {
 	
+	//hide splash
+	cordova.exec(null, null, "SplashScreen", "hide", []); 
+	
 	//JQM Settings
 	$.mobile.defaultPageTransition="none";
 	
