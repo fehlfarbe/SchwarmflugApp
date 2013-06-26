@@ -26,6 +26,7 @@ var onGeoSuccess = function(position) {
 			+ "Länge: " + $('#lon').val() );
 	
 	$.mobile.hidePageLoadingMsg();
+	$.unblockUI(); 
 };
 
 
@@ -41,12 +42,14 @@ function onGeoError(error) {
 	}
 	
 	$.mobile.hidePageLoadingMsg();
+	$.unblockUI(); 
 }
 
 function locate()
 {
 	//$("#geomsg").html('<img src="img/antload32.gif" />');
 	$.mobile.showPageLoadingMsg("a", "Lokalisiere Standort...", true);
+	$.blockUI(); 
 	navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
 }
 
@@ -63,6 +66,7 @@ function getCurrentTime(){
 function sumbitData(){
 	
 	$.mobile.showPageLoadingMsg("a", "Übermittle Daten", true);
+	$.blockUI(); 
 	
 	url = server + "/newswarm";
 	
@@ -117,6 +121,7 @@ function sumbitData(){
 				alert("Meldung erfolgreich!\n");
 						//+r.bytesSent+" bytes gesendet.");
 				$.mobile.hidePageLoadingMsg();
+				$.unblockUI();
 				$.mobile.navigate("#index");
 			},
 			function(error) {
@@ -132,6 +137,7 @@ function sumbitData(){
 				}
 				
 				$.mobile.hidePageLoadingMsg();
+				$.unblockUI();
 			},
 			options);
 

@@ -13,6 +13,9 @@ from flask import Flask, render_template, request, abort, json, jsonify, make_re
 from werkzeug import secure_filename
 import dbhandler
 import base64
+import Image
+from cStringIO import StringIO
+
 # Configuration
 UPLOAD_FOLDER = './static/uploads'
 ALLOWED_EXTENSIONS = set(['jpg', 'jpeg', 'gif'])
@@ -79,7 +82,8 @@ def swarmlist():
     genus = getArg(request, 'genus')
     species = getArg(request, 'species')
     startdate = getArg(request, 'startdate')
-    limit = getArg(request, 'limit')  
+    limit = getArg(request, 'limit') 
+    image = getArg(request, 'image')
     
     swarmlist = dbhandler.swarmList([lat, lon], radius, genus, species, startdate, limit)
     
@@ -91,14 +95,25 @@ def swarmlist():
         jsonstr = ""
         for swarm in swarmlist:
             ###convert pics to base64 string
-            if swarm['image'] != None:
+            if swarm['image'] and image == "true":
+                imgsize = 128, 128 # maximal image size
                 try:
-                    with open(UPLOAD_FOLDER + str(swarm['image'], "rb")) as image_file:
-                        imgstring = base64.b64encode(image_file.read())
-                        swarm['image'] = imgstring;
-                        sys.stderr.write("Imagestring: " + str(imgstring) + "\n")
-                except:
-                    sys.stderr.write("Image " + str(swarm['image']) + " doesnt exist\n")
+#                     with open(os.path.join(app.config['UPLOAD_FOLDER'], str(swarm['image'])), "rb") as image_file:
+#                         imgstring = base64.b64encode(image_file.read())
+#                         swarm['image'] = imgstring;
+#                         sys.stderr.write("Imagestring length: " + str(len(imgstring)) + "\n")
+                    img = Image.open( os.path.join(app.config['UPLOAD_FOLDER'], str(swarm['image'])) )
+                    img.thumbnail(imgsize, Image.ANTIALIAS)
+                    output = StringIO()
+                    img.save(output, format='JPEG')
+                    imgstring = base64.b64encode(output.getvalue())
+                    swarm['image'] = imgstring;
+                    sys.stderr.write("Imagestring length: " + str(len(imgstring)) + "\n")
+                except Exception, e:
+                    sys.stderr.write("Image " + str(swarm['image']) + e.message + "\n")
+                    swarm['image'] = ''
+            else:
+                swarm['image'] = ''
             
             jsonstr += json.dumps(swarm) + "\n"            
         

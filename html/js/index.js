@@ -8,8 +8,14 @@ function onDeviceReady() {
 	
 	$.mobile.page.prototype.options.addBackBtn = true;
 	//$.mobile.page.prototype.options.backBtnText = " ";
-	$.mobile.loadingMessageTextVisible = true;
 	
+	$.mobile.loadingMessageTextVisible = true;
+	$.blockUI.defaults = { 
+		    message:  null,
+		    title: null,        // title string; only used when theme == true 
+		    draggable: false,    // only used when theme == true (requires jquery-ui.js to be loaded) 
+		    theme: false
+	};
 
 
 	$(document).bind('pagechange', function(event) {
