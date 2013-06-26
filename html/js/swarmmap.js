@@ -15,6 +15,8 @@ function loadGoogleMaps() {
 	
 	console.log('loadGoogleMaps() called');
 	
+	$('#map_canvas').offsetHeight = $('#map_canvas').offsetWidth; 
+	
 	//myLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 	myLocation = new Object();
 	myLocation.lat = 51.042;
@@ -64,16 +66,6 @@ function addUserMarker() {
 }
 
 function addSwarmMarker(swarm, micon) {
-	// Zeitdifferenz
-	var tuser = new Date();
-	var tswarm = new Date(swarm.date);
-	var tdiff = parseInt((tuser.getTime() - tswarm.getTime())/(24*3600*1000)) + 1;
-	if(tdiff > mtime) return;
-	
-	// Gattung
-	if(mgenus != '(alle)' && swarm.genus != mgenus) return;
-	// Art
-	if(mspecies != '(alle)' && swarm.species != mgenus) return;
 	
 	var mark = $('#map_canvas').gmap('addMarker', {
 		'position': new google.maps.LatLng(swarm.position[0], swarm.position[1]),
@@ -84,11 +76,13 @@ function addSwarmMarker(swarm, micon) {
 	
 	var mcontent = '<span class="mark_art">' + swarm.genus + ' ' + swarm.species + '</span><br/>';
 	mcontent += '<span class="mark_date">' + swarm.date + '</span><br/>';
+	if(swarm.image) mcontent += '<img src="data:image/jpeg;base64,' + swarm.image + '" /> <br/>';
+	console.log(swarm.image);
 	mcontent += 'Entfernung: ' + runde(swarm.distance, 1) + ' km<br/>';
 	mcontent += '<span class="mark_comm_head">Kommentar:</span><br/>' + swarm.comment;
 	
 	mark.click(function(){
-		$('#map_canvas').gmap('openInfoWindow', {'content': mcontent}, mark);
+		$('#map_canvas').gmap('openInfoWindow', {'content': mcontent, 'pixelOffset': new google.maps.Size(0,32,'px','px')}, mark);
 	});
 }
 
@@ -99,7 +93,13 @@ function addMarkers() {
 }
 
 function getSwarms() {
-	console.log(server + '/swarmlist' + '?lat=' + myLocation.lat + '&lon=' + myLocation.lng + '&radius=' + mradius);
+	var requrl = server + '/swarmlist' + '?lat=' + myLocation.lat + '&lon=' + myLocation.lng + '&radius=' + mradius;
+	requrl += '&startdate=' + getStartdate();
+	requrl += '&image=true';
+	if(mgenus != '(alle)') requrl += '&genus=' + mgenus;
+	if(mspecies != '(alle)') requrl += '&species=' + mspecies;
+	
+	console.log(requrl);
 	$.ajax({
 		url: server + '/swarmlist' + '?lat=' + myLocation.lat + '&lon=' + myLocation.lng + '&radius=' + mradius,
 		success: function(data) {
@@ -122,7 +122,9 @@ function runde(x, n) {
 
 function clearMarkers() {
 	$('#map_canvas').gmap('clear', 'markers');
+	$('#map_canvas').gmap('clear', 'overlays');
 	addUserMarker();
+	$('#map_canvas').gmap('refresh');
 }
 
 function onAmbitChange(value) {
@@ -146,7 +148,18 @@ function onTimeChange(value) {
 	case '1 Woche': mtime = 7; break;
 	case '1 Monat': mtime = 31; break;
 	}
-	addMarkers();
+	getSwarms();
+}
+
+function getStartdate() {
+	var date = new Date();
+	date.setDate(date.getDate() - mtime);
+	var y = date.getFullYear();
+	var m = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1;
+	var d = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+	var dstr = y + '/' + m + '/' + d;
+	console.log(dstr);
+	return dstr;
 }
 
 /************* Get genus list *********/
@@ -185,7 +198,7 @@ function onGenusChange(genus) {
 	if(mgenus == '(alle)') {
 		mspecies = '(alle)';
 		clearMarkers();
-		addMarkers();
+		getSwarms();
 		return;
 	}
 	
@@ -217,5 +230,5 @@ function onSpeciesChange(species) {
 	
 	mspecies = species;
 	clearMarkers();
-	addMarkers();
+	getSwarms();
 }
