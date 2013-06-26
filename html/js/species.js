@@ -7,6 +7,7 @@ dbSize = 65536; //bytes
 function updateSpeciesDB(){
 	
 	$.mobile.showPageLoadingMsg("a", "Aktualisiere Artenliste...", true);
+	$.blockUI(); 
 	
 	$.ajax({
 		url: server + "/fullspecieslist",
@@ -25,11 +26,13 @@ function updateSpeciesDB(){
 				function(err){
 					alert("Fehler beim Erstellen der Tabelle! " + err.message);
 					$.mobile.hidePageLoadingMsg();
+					$.unblockUI(); 
 				},
 				function(){
-					alert("Artenliste erfolgreich aktualisiert!");
+					//alert("Artenliste erfolgreich aktualisiert!");
 					getGenusList();
 					$.mobile.hidePageLoadingMsg();
+					$.unblockUI(); 
 				}
 			);
 		},
@@ -38,6 +41,7 @@ function updateSpeciesDB(){
 			// display a message
 			alert("Fehler beim Laden der Artenliste " + xhRequest.status + " "+ xhRequest.responseText);
 			$.mobile.hidePageLoadingMsg();
+			$.unblockUI(); 
 		}
 	});
 }
