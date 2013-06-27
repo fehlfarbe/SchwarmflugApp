@@ -23,7 +23,11 @@
 	color: #ffff00;
 }
 
-#swarmnews div {
+
+
+#swarmnews li img {
+	width:128px;
+	margin: auto;
 	/*margin: 10px 0;
 	padding: 10px;
 	background-color: #ddffaa;
