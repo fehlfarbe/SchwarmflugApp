@@ -16,7 +16,7 @@ function onDeviceReady() {
 	$.mobile.loadingMessageTextVisible = true;
 	$.unblockUI();
 
-
+	
 	$(document).bind('pagechange', function(event) {
 
 		// grab a list of all the divs's found in the page that have the attribute "role" with a value of "page"
@@ -52,10 +52,12 @@ function onDeviceReady() {
 		else if (attr.indexOf('swarmmap.html') !== -1) {
 			//do swarmmap init stuff
 			loadGoogleMaps();
-			//getSwarms();
 		}
 		
 		prevPage = attr;
+		
 
 	});
+	
+	getSwarmNews();
 }

@@ -15,7 +15,8 @@ function loadGoogleMaps() {
 	
 	console.log('loadGoogleMaps() called');
 	
-	$('#map_canvas').offsetHeight = $('#map_canvas').offsetWidth; 
+	console.log('offsetWidth: ' + document.getElementById('map_canvas').offsetWidth);
+	document.getElementById('map_canvas').style.height = document.getElementById('map_canvas').offsetWidth + 'px';
 	
 	//myLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 	myLocation = new Object();
@@ -77,9 +78,8 @@ function addSwarmMarker(swarm, micon) {
 	var mcontent = '<span class="mark_art">' + swarm.genus + ' ' + swarm.species + '</span><br/>';
 	mcontent += '<span class="mark_date">' + swarm.date + '</span><br/>';
 	if(swarm.image) mcontent += '<img src="data:image/jpeg;base64,' + swarm.image + '" /> <br/>';
-	console.log(swarm.image);
-	mcontent += 'Entfernung: ' + runde(swarm.distance, 1) + ' km<br/>';
-	mcontent += '<span class="mark_comm_head">Kommentar:</span><br/>' + swarm.comment;
+	mcontent += '<span class="mark_dist">Entfernung:</span> ' + runde(swarm.distance, 1) + ' km<br/>';
+	if(swarm.comment) mcontent += '<span class="mark_comm_head">Kommentar:</span><br/>' + swarm.comment;
 	
 	mark.click(function(){
 		$('#map_canvas').gmap('openInfoWindow', {'content': mcontent, 'pixelOffset': new google.maps.Size(0,32,'px','px')}, mark);
@@ -101,11 +101,11 @@ function getSwarms() {
 	
 	console.log(requrl);
 	$.ajax({
-		url: server + '/swarmlist' + '?lat=' + myLocation.lat + '&lon=' + myLocation.lng + '&radius=' + mradius,
+		url: requrl,
 		success: function(data) {
 			console.log('getSwarms success');
 			swarmdata = data.swarms;
-			addMarkers();			
+			addMarkers();
 		},
 		error: function(xhRequest, ErrorText, thrownError) { console.log('getSwarms error ' +xhRequest.status+'|'+xhRequest.responseText); }
 	});
@@ -123,6 +123,7 @@ function runde(x, n) {
 function clearMarkers() {
 	$('#map_canvas').gmap('clear', 'markers');
 	$('#map_canvas').gmap('clear', 'overlays');
+	$('#map_canvas').gmap('closeInfoWindow');
 	addUserMarker();
 	$('#map_canvas').gmap('refresh');
 }
@@ -222,7 +223,7 @@ function onGenusChange(genus) {
 			});
 	
 	clearMarkers();
-	addMarkers();
+	getSwarms();
 }
 
 function onSpeciesChange(species) {

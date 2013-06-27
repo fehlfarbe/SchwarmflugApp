@@ -13,14 +13,20 @@
 	font-weight: bold;
 }
 
-.mark_date {
-	font-size: 8pt;
-}
-
+.mark_date,
+.mark_dist,
 .mark_comm_head {
 	font-size: 8pt;
 }
 
 .suchkrit {
 	color: #ffff00;
+}
+
+#swarmnews div {
+	margin: 10px 0;
+	padding: 10px;
+	background-color: #ddffaa;
+	color: #000000;
+	border: 1px solid #229922;
 }
