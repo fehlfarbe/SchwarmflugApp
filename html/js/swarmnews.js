@@ -19,8 +19,8 @@ function appendNews(swarm) {
 	var ncontent = '<li id="snews"><h1>' + swarm.genus + ' ' + swarm.species + '</h1>';
 	ncontent += '<p>' + swarm.date + ' &ndash; Lat: ' + runde(swarm.position[0], 3) + ' / Lng: ' + runde(swarm.position[1], 3) + '</p>';
 	if(swarm.image) ncontent += '<img src="data:image/jpeg;base64,' + swarm.image + '" />';
-	if(swarm.comment) ncontent += '<h3>Kommentar:' + swarm.comment;
-	ncontent += '</h3></li>';
+	if(swarm.comment) ncontent += '<h3>Kommentar: ' + swarm.comment + '</h3>';
+	ncontent += '</li>';
 	
 	$('#swarmnews').append(ncontent);
 }

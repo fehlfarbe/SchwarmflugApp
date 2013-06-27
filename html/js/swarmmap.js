@@ -1,15 +1,28 @@
-// Quelle: 	http://vsnomad.com/2013/03/18/dtw-google-maps/
-//			https://developers.google.com/maps/documentation/javascript/tutorial?hl=de
-//			http://thingsico.de/blog/2011/11/using-google-maps-reliably-in-phonegap/
-//			http://www.mobiledevelopersolutions.com/home/start/twominutetutorials/tmt4part1
-
-var myLocation;		// coordinates
-var swarmdata;		// 
+var myLocation = new Object();	// coordinates
+myLocation.lat = 51.042;
+myLocation.lng = 13.727;
+var swarmdata;
 var mIconSwarm;		// icon for marker
 var mradius = 1000;
 var mtime = 31;
 var mgenus = '(alle)';
 var mspecies = '(alle)';
+
+function getLocation() {
+	$.mobile.showPageLoadingMsg("a", 'Bestimme Standort...', false);
+	$.blockUI({message: null}); 
+	navigator.geolocation.getCurrentPosition(onGeoLocSuccess, onGeoError);
+}
+
+function onGeoLocSuccess(position) {
+	myLocation.lat = position.coords.latitude;
+	myLocation.lng = position.coords.longitude;
+	
+	loadGoogleMaps();
+	
+	$.mobile.hidePageLoadingMsg();
+	$.unblockUI(); 
+};
 
 function loadGoogleMaps() {
 	
@@ -18,15 +31,10 @@ function loadGoogleMaps() {
 	console.log('offsetWidth: ' + document.getElementById('map_canvas').offsetWidth);
 	document.getElementById('map_canvas').style.height = document.getElementById('map_canvas').offsetWidth + 'px';
 	
-	//myLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-	myLocation = new Object();
-	myLocation.lat = 51.042;
-	myLocation.lng = 13.727;
-	
 	try {
 		
 		$('#map_canvas').gmap({
-    		'center': new google.maps.LatLng(51.042, 13.727),
+    		'center': new google.maps.LatLng(myLocation.lat, myLocation.lng),
     		'zoom': 10,
     		'mapTypeControl': true,
     		'callback': function(){console.log('gmap callback');}

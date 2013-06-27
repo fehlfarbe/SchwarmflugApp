@@ -51,7 +51,8 @@ function onDeviceReady() {
 		} 
 		else if (attr.indexOf('swarmmap.html') !== -1) {
 			//do swarmmap init stuff
-			loadGoogleMaps();
+			//loadGoogleMaps();
+			getLocation();
 		}
 		
 		prevPage = attr;
