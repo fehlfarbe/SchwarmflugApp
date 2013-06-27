@@ -6,11 +6,12 @@
   </head>
   <body>
     <div id="content">
+    <div id="head">Die 10 neusten Schwärme</div>
     	{% for swarm in swarmlist %}
 	        <div class="swarm">
 	        <h2>{{ swarm['genus'] }} {{ swarm['species'] }}</h2>
 	        Datum: {{ swarm['date'] }} <br />
-	        Ort: {{ swarm['position'][0] }}°, {{ swarm['position'][1] }}°<br />
+	        Ort: <a href="https://maps.google.com/maps?q={{ swarm['position'][0] }}, {{ swarm['position'][1] }}" target="_blank">{{ swarm['position'][0] }}°, {{ swarm['position'][1] }}°</a><br />
 	        Kommentar: {{ swarm['comment'] }}<br />
 	        {% if swarm['image'] %}
 		        <a href="{{url_for('static',filename='uploads/' + swarm["image"])}}">

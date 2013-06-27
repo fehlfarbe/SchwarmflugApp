@@ -50,7 +50,7 @@ def allowed_file(filename):
 @app.route('/')
 def index():
     
-    swarmlist = dbhandler.swarmList()
+    swarmlist = dbhandler.swarmList(limit=5)
     
     return render_template('index.html', swarmlist=swarmlist)
     

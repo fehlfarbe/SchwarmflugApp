@@ -47,7 +47,6 @@ function onGeoError(error) {
 
 function locate()
 {
-	//$("#geomsg").html('<img src="img/antload32.gif" />');
 	$.mobile.showPageLoadingMsg("a", 'Bestimme Standort...', false);
 	$.blockUI({message: null}); 
 	navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);

@@ -148,6 +148,9 @@ def swarmList(position = None, radius = None, genus = None, species = None, star
             params['startdate'] = startdate
         if where:
             query = '{} WHERE {}'.format(query, ' AND '.join(where))
+        
+        query += " ORDER BY date DESC "
+        
         if limit:
             query += " LIMIT " + str(limit)
         

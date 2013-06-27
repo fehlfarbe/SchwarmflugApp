@@ -2,17 +2,46 @@
 
 body{
 	background-color: #292;
+	padding-top: 30px;
 }
 
-div.swarm{
-	width: 300px;
+a, a:ACTIVE
+{
+	color: #000;
+	text-decoration: none;
+	border-bottom: 1px dashed #000;
+}
+
+a:hover{
+	border-bottom: none;
+}
+
+div#head{
+	width: 100%;
+	left: 0px;
+	top: 0px;
+	position: fixed;
 	background-color: #dfa;
-	margin: 10px;
+	border-bottom: 2px dashed #000;
+	text-align: center;
+	padding: 5px;
+	margin-bottom: 100px;
+	font-size: 14pt;
+	font-weight: bold;
+}
+
+
+div.swarm{	
+	width: 400px;
+	background-color: #dfa;
+	margin: 15px auto;
 	padding: 5px;
 	/*float:left;*/
 	border: 1px dashed #000;	
 }
 
 div.swarm img{
+	display: block;
 	max-width: 250px;
+	margin: 5px auto;
 }
