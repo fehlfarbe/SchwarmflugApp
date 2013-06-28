@@ -58,7 +58,7 @@ function getCurrentTime(){
 	
 	var d = new Date();
 	$('#date').val(d.getFullYear()+"/"+(d.getMonth()+1 < 10 ? '0' + (d.getMonth()+1) : d.getMonth()+1)+"/"+d.getDate());
-	$("#time").val(d.getHours()+":" + (d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes()) );
+	$("#time").val( (d.getHours() < 10 ? '0' + d.getHours() : d.getHours() )+ ":" + (d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes()) );
 }
 
 /************* Submit data ********************/

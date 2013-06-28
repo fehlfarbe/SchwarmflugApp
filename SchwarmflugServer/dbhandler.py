@@ -196,7 +196,11 @@ def swarmList(position = None, radius = None, genus = None, species = None, star
                     
                     
             #sys.stderr.write(str(swarm) + "\n")
-                
+        for swarm in swarms:
+            if swarm['genus'] == "unknown":
+                swarm['genus'] = "Unbekannt"
+            if swarm['species'] == "sp":
+                swarm['species'] = "sp."
             
         return swarms
             
