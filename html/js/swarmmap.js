@@ -11,7 +11,7 @@ var mspecies = '(alle)';
 function getLocation() {
 	$.mobile.showPageLoadingMsg("a", 'Bestimme Standort...', false);
 	$.blockUI({message: null}); 
-	navigator.geolocation.getCurrentPosition(onGeoLocSuccess, onGeoError);
+	navigator.geolocation.getCurrentPosition(onGeoLocSuccess, onGeoError, { maximumAge: 30000, timeout: 5000, enableHighAccuracy: true });
 }
 
 function onGeoLocSuccess(position) {
@@ -61,7 +61,7 @@ function addUserMarker() {
 		'position': new google.maps.LatLng(myLocation.lat, myLocation.lng), 
 		'bounds': false, 
 		'title': 'User',
-		'animation': google.maps.Animation.DROP,
+		//'animation': google.maps.Animation.DROP,
 		'fillColor': '#6EBB00',
 	});
 	
@@ -79,7 +79,7 @@ function addSwarmMarker(swarm, micon) {
 	var mark = $('#map_canvas').gmap('addMarker', {
 		'position': new google.maps.LatLng(swarm.position[0], swarm.position[1]),
 		'bounds': false,
-		'animation': google.maps.Animation.DROP,
+		//'animation': google.maps.Animation.DROP,
 		'icon': micon
 	});
 	
@@ -95,12 +95,18 @@ function addSwarmMarker(swarm, micon) {
 }
 
 function addMarkers() {
+	
+	console.log("add markers...");
+	
 	for(var i=0; i<swarmdata.length; i++) {
 		addSwarmMarker(swarmdata[i], mIconSwarm);
 	}
+	
+	console.log("markers added!");
 }
 
 function getSwarms() {
+	
 	var requrl = server + '/swarmlist' + '?lat=' + myLocation.lat + '&lon=' + myLocation.lng + '&radius=' + mradius;
 	requrl += '&startdate=' + getStartdate();
 	requrl += '&image=true';
@@ -115,7 +121,9 @@ function getSwarms() {
 			swarmdata = data.swarms;
 			addMarkers();
 		},
-		error: function(xhRequest, ErrorText, thrownError) { console.log('getSwarms error ' +xhRequest.status+'|'+xhRequest.responseText); }
+		error: function(xhRequest, ErrorText, thrownError) {
+			console.log('getSwarms error ' +xhRequest.status+'|'+xhRequest.responseText);
+		}
 	});
 }
 

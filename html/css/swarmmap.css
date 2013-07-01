@@ -26,8 +26,9 @@
 
 
 #swarmnews li img {
-	width:128px;
-	margin: auto;
+	width: 128px;
+	margin: 20 px auto;
+	display:block;
 	/*margin: 10px 0;
 	padding: 10px;
 	background-color: #ddffaa;

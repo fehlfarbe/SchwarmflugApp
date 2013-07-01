@@ -15,6 +15,7 @@ import dbhandler
 import base64
 import Image
 from cStringIO import StringIO
+import datetime
 
 # Configuration
 UPLOAD_FOLDER = './static/uploads'
@@ -142,6 +143,11 @@ def newswarm():
         ### get form data
         comment = getPostData(request, 'comment')
         date = getPostData(request, 'date')
+        try:
+            date = datetime.datetime.strptime(date, "%d.%m.%Y").strftime("%Y/%m/%d")
+        except Exception, e:
+            sys.stderr.write(str(e.message))
+        
         timedata = getPostData(request, 'time')
         lat = getPostData(request, 'lat')
         lon = getPostData(request, 'lon')

@@ -88,6 +88,7 @@ function genusQuerySuccess(tx, results) {
         //console.log('<option value="'+results.rows.item(i).genus+'">'+results.rows.item(i).genus+'</option>');
     }
     $('#genus').selectmenu('refresh', true);
+    $("#species").attr("disabled", "disabled");
 }
 
 function genusQueryDB(tx) {
@@ -98,23 +99,24 @@ function genusQueryDB(tx) {
 }
 
 function getGenusList(){
-	$('#genusload').css("display", "inline");
 	var db = window.openDatabase(dbName, dbVers, dbDisplayName, dbSize);
 	db.transaction(genusQueryDB, genusErrorCB);
 }
 
 /***************** Get Species list ******************/
 function getSpecies(genus){
-
-	$('#speciesload').css("display", "inline");
 	
-	var dropdown = document.getElementById('species');
 	$("#species").empty();
 	
 	if(genus == "unknown"){
-		$('#speciesload').css("display", "none");
+		console.log("Unknown Genus");
+		$('#species').val('');
+		$('#species').selectmenu('refresh', true);
+		$("#species").attr("disabled", "disabled");
 		return;
 	}
+	
+	$("#species").removeAttr('disabled');
 		
 	
 	var db = window.openDatabase(dbName, dbVers, dbDisplayName, dbSize);

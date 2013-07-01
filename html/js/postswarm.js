@@ -49,7 +49,7 @@ function locate()
 {
 	$.mobile.showPageLoadingMsg("a", 'Bestimme Standort...', false);
 	$.blockUI({message: null}); 
-	navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
+	navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError, { maximumAge: 30000, timeout: 5000, enableHighAccuracy: true });
 }
 
 
@@ -57,7 +57,10 @@ function locate()
 function getCurrentTime(){
 	
 	var d = new Date();
-	$('#date').val(d.getFullYear()+"/"+(d.getMonth()+1 < 10 ? '0' + (d.getMonth()+1) : d.getMonth()+1)+"/"+d.getDate());
+	$('#date').val(
+			(d.getDate() < 10 ? '0' + d.getDate() : d.getDate()) + "." + 
+			(d.getMonth()+1 < 10 ? '0' + (d.getMonth()+1) : d.getMonth()+1)+"." +
+			d.getFullYear());
 	$("#time").val( (d.getHours() < 10 ? '0' + d.getHours() : d.getHours() )+ ":" + (d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes()) );
 }
 
@@ -82,6 +85,7 @@ function sumbitData(){
 	params.lon = $('#lon').val();
 	params.time = $('#time').val();
 	params.date = $('#date').val();
+	console.log(params.date);
 	params.genus = $('#genus option:selected').val();
 	params.species = $('#species option:selected').val() || "";
 	params.comment = $('#comment').val();
