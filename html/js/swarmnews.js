@@ -1,11 +1,13 @@
 function getSwarmNews() {
 	
 	$('#swarmnews').block({message: "<img src='img/antload32.gif' />"});
+	$('#swarmnews').empty();
 	
 	var requrl = server + '/swarmlist?image=true&limit=10';
 	console.log(requrl);
 	$.ajax({
 		url: requrl,
+		cache: false,
 		success: function(data) {
 			console.log('getSwarmNews success');
 			var l = Math.min(5, data.swarms.length);

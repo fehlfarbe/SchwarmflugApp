@@ -11,6 +11,7 @@ function updateSpeciesDB(){
 	
 	$.ajax({
 		url: server + "/fullspecieslist",
+		cache: false,
 		success: function(data) {
 			// it works, do something with the data
 			// alert(data.toString());
