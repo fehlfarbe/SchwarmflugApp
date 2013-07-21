@@ -42,14 +42,14 @@ class App extends CI_Controller {
 		$swarm = Array();
 					
 		if ( $this->upload->do_upload('image') ){
-			//print_r($this->upload->data());
-			$swarm['image'] = $this->upload->data()['file_name'];
+			$upload = $this->upload->data();
+			$swarm['image'] = $upload['file_name'];
 			
 			// create thumb
 			$config_manip = array(
 					'image_library' => 'gd2',
-					'source_image' => $this->upload->data()['full_path'],
-					'new_image' => $this->upload->data()['full_path'],
+					'source_image' => $upload['full_path'],
+					'new_image' => $upload['full_path'],
 					'maintain_ratio' => TRUE,
 					'create_thumb' => TRUE,
 					'thumb_marker' => '-thumb',

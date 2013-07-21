@@ -38,10 +38,10 @@ class App_model extends CI_Model {
 	
 	public function getSwarms($args = null) {
 		
-		if (!$args) {
-			$query = $this->db->get( 'swarms' );
-			return $query->result_array();
-		}
+// 		if (!$args) {
+// 			$query = $this->db->get( 'swarms' );
+// 			return $query->result_array();
+// 		}
 		
 		////// if args are given
 		
@@ -70,7 +70,7 @@ class App_model extends CI_Model {
 		
 		////// postfilter / -processing
 		$processed = array();
-		
+	
 		foreach ($result as &$swarm) {
 		    $dist = 0;
 		    $swarm->distance = $dist;
@@ -88,8 +88,8 @@ class App_model extends CI_Model {
 			//set distance
 		    $swarm->distance = $dist;
 		    
-		    //cvtimage if necessary
-		    if( array_key_exists('image', $args) == 'true' )
+		    //cvtimage if necessary		    
+		    if( array_key_exists('image', $args) && $args['image'] == 'true')
 		    	$swarm->image = $this->cvtImage($swarm->image);
 		    else
 		    	$swarm->image = "";
