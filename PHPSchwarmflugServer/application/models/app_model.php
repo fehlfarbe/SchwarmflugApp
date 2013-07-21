@@ -63,8 +63,8 @@ class App_model extends CI_Model {
 			$where['date >='] = $args['startdate'];
 				
 		//print_r($where);
-		$query = $this->db->get_where('swarms', $where, $limit, 0);
-
+		$query = $this->db->order_by('date', 'desc')->get_where('swarms', $where, $limit, 0);
+		
 		$result = $query->result();
 		
 		

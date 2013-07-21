@@ -40,10 +40,13 @@ class App extends CI_Controller {
 		$this->load->library('upload', $config);
 		
 		$swarm = Array();
+		
+		log_message('info', 'New swarm!');
 					
 		if ( $this->upload->do_upload('image') ){
 			$upload = $this->upload->data();
 			$swarm['image'] = $upload['file_name'];
+			log_message('info', $swarm['image']);
 			
 			// create thumb
 			$config_manip = array(
@@ -107,12 +110,9 @@ class App extends CI_Controller {
 		$swarm['lat'] = $this->input->post('lat', TRUE);
 		$swarm['lon'] = $this->input->post('lon', TRUE);
 		$swarm['date'] = date("Y-m-d", strtotime($this->input->post('date', TRUE)))." ".$this->input->post('time', TRUE);
-		$swarm['comment'] = $this->input->post('comment', TRUE);
+		$swarm['comment'] = $this->input->post('comment', TRUE);		
 		
-		
-		$this->app_model->newSwarm($swarm);
-		
-		
+		$this->app_model->newSwarm($swarm);		
 		
 		$this->output->set_content_type('application/json');
 	}
