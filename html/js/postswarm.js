@@ -101,8 +101,8 @@ function sumbitData(){
 			params.photo = imageURI;
 			imageURI = "";
 		} else {
-			options.fileKey = "file";
-			options.fileName = "image";
+			options.fileKey = "image";
+			options.fileName = "image.jpg";
 			options.mimeType = "image/jpeg";
 			options.chunkedMode = false;			
 		}
@@ -171,7 +171,7 @@ function onPhotoDataSuccess(imageData) {
 	
 	photo = imageData;
 	//scroll to image label
-	$('html, body').animate({scrollTop: $('#lblphoto').offset().top}, 2500);
+	$('html, body').animate({scrollTop: $('#lblphoto').offset().top}, 1500);
 }
 
 // Called when a photo is successfully retrieved
@@ -198,7 +198,7 @@ function onPhotoURISuccess(imageURI) {
 	//loadData();
 	
 	//scroll to image label
-	$('html, body').animate({scrollTop: $('#lblphoto').offset().top}, 2500);
+	$('html, body').animate({scrollTop: $('#lblphoto').offset().top}, 1500);
 }
 
 // A button will call this function

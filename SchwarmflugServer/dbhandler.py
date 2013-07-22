@@ -230,4 +230,24 @@ def fullSpeciesList():
         return {"ants" : antlist}
     
     return None
+
+def toFile():
+    
+    file = open("export.sql", 'w')
+    
+    con = sql.connect(dbname)
+    
+    with con:
+            
+        cur = con.cursor()
+        cur.execute("SELECT * FROM species")
+        rows = cur.fetchall()
+        
+        file.write("INSERT INTO species VALUES ");
+        for row in rows:
+            sys.stderr.write(str(row) + "\n")
+            file.write("('" + row[1] + "', '" + row[2] + "'),\n")
+        
+if __name__ == '__main__':
+    toFile()     
             

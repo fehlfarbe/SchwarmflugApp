@@ -1,7 +1,7 @@
 ///////// Server Settings
-address = "kolbe.no-ip.org";
+address = "schwarmflug.millionen-von-sonnen.de/index.php/app/";
 //address = "192.168.1.102";
 protocol = "http://";
-port = "5000";
+//port = "5000";
 
-server = protocol + address + ":" + port;
+server = protocol + address;// + ":" + port;

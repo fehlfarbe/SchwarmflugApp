@@ -10,7 +10,7 @@ function updateSpeciesDB(){
 	$.blockUI({message: null});
 	
 	$.ajax({
-		url: server + "/fullspecieslist",
+		url: server + "/specieslist",
 		cache: false,
 		success: function(data) {
 			// it works, do something with the data

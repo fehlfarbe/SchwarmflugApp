@@ -77,7 +77,7 @@ function addUserMarker() {
 function addSwarmMarker(swarm, micon) {
 	
 	var mark = $('#map_canvas').gmap('addMarker', {
-		'position': new google.maps.LatLng(swarm.position[0], swarm.position[1]),
+		'position': new google.maps.LatLng(swarm.lat, swarm.lon),
 		'bounds': false,
 		//'animation': google.maps.Animation.DROP,
 		'icon': micon
@@ -85,7 +85,7 @@ function addSwarmMarker(swarm, micon) {
 	
 	var mcontent = '<span class="mark_art">' + swarm.genus + ' ' + swarm.species + '</span><br/>';
 	mcontent += '<span class="mark_date">' + swarm.date + '</span><br/>';
-	if(swarm.image) mcontent += '<img src="data:image/jpeg;base64,' + swarm.image + '" /> <br/>';
+	if(swarm.image) mcontent += '<img src="' + swarm.image + '" /> <br/>';
 	mcontent += '<span class="mark_dist">Entfernung:</span> ' + runde(swarm.distance, 1) + ' km<br/>';
 	if(swarm.comment) mcontent += '<span class="mark_comm_head">Kommentar:</span><br/>' + swarm.comment;
 	
@@ -107,11 +107,11 @@ function addMarkers() {
 
 function getSwarms() {
 	
-	var requrl = server + '/swarmlist' + '?lat=' + myLocation.lat + '&lon=' + myLocation.lng + '&radius=' + mradius;
-	requrl += '&startdate=' + getStartdate();
-	requrl += '&image=true';
-	if(mgenus != '(alle)') requrl += '&genus=' + mgenus;
-	if(mspecies != '(alle)') requrl += '&species=' + mspecies;
+	var requrl = server + '/swarmlist/' + '/lat/' + myLocation.lat + '/lon/' + myLocation.lng + '/radius/' + mradius;
+	requrl += '/startdate/' + getStartdate();
+	requrl += '/image/true';
+	if(mgenus != '(alle)') requrl += '/genus/' + mgenus;
+	if(mspecies != '(alle)') requrl += '/species/' + mspecies;
 	
 	console.log(requrl);
 	$.ajax({
