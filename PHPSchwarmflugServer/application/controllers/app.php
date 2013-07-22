@@ -45,6 +45,13 @@ class App extends CI_Controller {
 		$swarm = Array();
 		
 		log_message('info', 'New swarm!');
+		
+		if( empty($_POST) )
+		{
+			log_message('error', 'No POST data!');
+			show_error('No POST data!');
+			return;
+		}
 					
 		if ( $this->upload->do_upload('image') ){
 			$upload = $this->upload->data();
