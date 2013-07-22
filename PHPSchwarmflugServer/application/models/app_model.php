@@ -90,7 +90,16 @@ class App_model extends CI_Model {
 		    
 		    //cvtimage if necessary		    
 		    if( array_key_exists('image', $args) && $args['image'] == 'true')
-		    	$swarm->image = $this->cvtImage($swarm->image);
+		    {
+		    	if( !array_key_exists('imageformat', $args))
+		    	{   		
+		    		$swarm->image = $this->cvtImage($swarm->image);
+		    	} else {
+			    	if( $args['imageformat'] == 'json')
+			    		$swarm->image = $this->cvtImage($swarm->image);
+		    	}
+			    		
+		    }
 		    else
 		    	$swarm->image = "";
 		    
@@ -113,6 +122,6 @@ class App_model extends CI_Model {
 	
 	public function newSwarm($swarm){
 		$this->db->insert('swarms', $swarm); 
-		print_r($swarm);
+		//print_r($swarm);
 	}
 }

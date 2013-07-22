@@ -1,6 +1,11 @@
+<!DOCTYPE HTML>
 <html>
 <head>
 	<title>SchwarmflugApp - <?php echo $title ?></title>
+	
+	<link rel="stylesheet" type="text/css" href="/css/style.css" />
 </head>
 <body>
-	<h1>CodeIgniter 2 Tutorial</h1>
+
+	<div id="head">SchwarmflugApp - <?php echo $title ?></div>
+	<div id="content">

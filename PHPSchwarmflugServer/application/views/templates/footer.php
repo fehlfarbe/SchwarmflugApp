@@ -1,4 +1,6 @@
-<strong>&copy; 2013</strong>
+
+</div>
+<div id="footer">Kontakt: info[at]millionen-von-sonnen.de</div>
 
 </body>
 </html>

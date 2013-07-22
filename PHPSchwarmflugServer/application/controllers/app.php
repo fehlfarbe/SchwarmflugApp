@@ -26,6 +26,9 @@ class App extends CI_Controller {
 			case 'newswarm':
 				$this->newswarm( $map );
 				break;
+			case 'newswarmform':
+				$this->newswarmform( $map );
+				break;
 			default:
 				$this->index( $map );
 		}
@@ -69,6 +72,7 @@ class App extends CI_Controller {
 		} else {
 			$this->upload->display_errors();
 			$photo = $this->input->post('photo', TRUE);
+			log_message('info', $photo);
 			
 			//if base64 string
 			if($photo != ""){
@@ -110,16 +114,23 @@ class App extends CI_Controller {
 		$swarm['lat'] = $this->input->post('lat', TRUE);
 		$swarm['lon'] = $this->input->post('lon', TRUE);
 		$swarm['date'] = date("Y-m-d", strtotime($this->input->post('date', TRUE)))." ".$this->input->post('time', TRUE);
-		$swarm['comment'] = $this->input->post('comment', TRUE);		
+		$swarm['comment'] = $this->input->post('comment', TRUE);
+
+		log_message('info', $swarm);
 		
 		$this->app_model->newSwarm($swarm);		
 		
 		$this->output->set_content_type('application/json');
 	}
 
-	public function index( $args )
+	public function newswarmform( $args )
 	{
 		$this->load->view('upload');
+	}
+	
+	public function index( $args )
+	{
+//		$this->load->view('app/list');
 		
 // 		print_r($args);
 				
