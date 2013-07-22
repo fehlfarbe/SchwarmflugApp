@@ -11,7 +11,7 @@ var mspecies = '(alle)';
 function getLocation() {
 	$.mobile.showPageLoadingMsg("a", 'Bestimme Standort...', false);
 	$.blockUI({message: null}); 
-	navigator.geolocation.getCurrentPosition(onGeoLocSuccess, onGeoError, { maximumAge: 30000, timeout: 5000, enableHighAccuracy: true });
+	navigator.geolocation.getCurrentPosition(onGeoLocSuccess, onGeoError, { maximumAge: 30000, timeout: 15000, enableHighAccuracy: true });
 }
 
 function onGeoLocSuccess(position) {
