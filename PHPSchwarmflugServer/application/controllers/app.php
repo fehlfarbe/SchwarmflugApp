@@ -116,7 +116,8 @@ class App extends CI_Controller {
 		$swarm['date'] = date("Y-m-d", strtotime($this->input->post('date', TRUE)))." ".$this->input->post('time', TRUE);
 		$swarm['comment'] = $this->input->post('comment', TRUE);
 
-		log_message('info', $swarm);
+		log_message('info', print_r($_POST, true));
+		log_message('info', print_r($swarm, true));
 		
 		$this->app_model->newSwarm($swarm);		
 		

@@ -37,6 +37,9 @@ function onGeoError(error) {
 	case 2:
 		alert("Standort kann nicht ermittelt werden. Überprüfen Sie Ihre Lokalisierungseinstellungen und -berechtigungen");
 		break;
+	case 3:
+		alert("Standort kann nicht ermittelt werden. " + error.message);
+		break;
 	default:
 		alert("Unbekannter Fehler bei Lokalisation (Code " + error.code + ", Beschreibung: " + error.message);
 	}
@@ -49,7 +52,7 @@ function locate()
 {
 	$.mobile.showPageLoadingMsg("a", 'Bestimme Standort...', false);
 	$.blockUI({message: null}); 
-	navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError, { maximumAge: 30000, timeout: 5000, enableHighAccuracy: true });
+	navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError, { maximumAge: 30000, timeout: 15000, enableHighAccuracy: true });
 }
 
 
