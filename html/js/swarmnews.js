@@ -1,7 +1,23 @@
 function getSwarmNews() {
 	
-	$('#swarmnews').block({message: "<img src='img/antload32.gif' />"});
-	$('#swarmnews').empty();
+	//console.log($('#swarmnews').length);
+	if( $('#swarmnews').length > 1)
+		$('#swarmnews').block({message: "<img src='img/antload32w.gif' />",
+			//theme: true
+			css: {
+		    	borderRadius: '10px',
+		        padding:        '10px', 
+		        margin:         '0px auto', 
+		        width:          '30%', 
+		        minHeight:		'40px',
+		        textAlign:      'center',
+		        verticalAlign:	'middle',
+		        color:          '#000', 
+		        border:         '0px', 
+		        backgroundColor:'#fff',  
+			}
+	    });
+
 	
 	var requrl = server + '/swarmlist/image/true/limit/5';
 	console.log(requrl);
@@ -14,6 +30,7 @@ function getSwarmNews() {
 			console.log(l + ' swarms');
 			//console.log(data.swarms);
 			
+			$('#swarmnews').empty();
 			for(var i=0;  i < l; i++) {
 				console.log(data.swarms[i]);
 				appendNews(data.swarms[i]);

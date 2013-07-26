@@ -75,74 +75,101 @@ function sumbitData(){
 		return;
 	}
 	
+	//block UI
 	$.mobile.showPageLoadingMsg("a", "Übermittle Daten", false);
 	$.blockUI({message: null}); 
 	
-	url = server + "/newswarm";
+	//get server url and image data
+	var url = server + "/newswarm";
 	var imageURI = $('#smallImage').attr('src');
 
-
-	var options = new FileUploadOptions();
+	//set POST data
 	var params = new Object();
 	params.lat = $('#lat').val();
 	params.lon = $('#lon').val();
 	params.time = $('#time').val();
 	params.date = $('#date').val();
-	console.log(params.date);
 	params.genus = $('#genus option:selected').val();
 	params.species = $('#species option:selected').val() || "";
 	params.comment = $('#comment').val();
 	
-	//image
-	options.fileKey = "file";
-	options.fileName = "";
-	options.mimeType = "";
-	options.chunkedMode = "";
-	
-	if(imageURI != ''){
+	//test if photo, album image or no image and send request
+	if(imageURI != '' && imageURI.indexOf('data:image/jpeg;base64') == -1){
+		//imagefile from album
+		var options = new FileUploadOptions();
+		options.fileKey = "image";
+		options.fileName = "image.jpg";
+		options.mimeType = "image/jpeg";
+		options.chunkedMode = false;
+		options.trustEveryone = true;
+		
+		options.params = params;
+		
+		// Transfer picture to server
+		var ft = new FileTransfer();
+		ft.upload(imageURI,
+				url, 
+				function(r){
+					alert("Meldung erfolgreich!\n");
+							//+r.bytesSent+" bytes gesendet.");
+					$.mobile.hidePageLoadingMsg();
+					$.unblockUI();
+					$.mobile.navigate("#index");
+				},
+				function(error) {
+					
+					switch(error.code)
+					{
+//					case 0:
+					case 1: alert("Server oder Netzwerk nicht erreichbar!"); break;
+//					case 2:
+					case 3: alert("Konnte keine Verbindung zu Server aufbauen. Timeout"); break;
+					default: alert("Serverfehler " + error.code + "\n" + error.message);
+					
+					}
+					
+					$.mobile.hidePageLoadingMsg();
+					$.unblockUI();
+				},
+				options,
+				true); //trust all hosts
+	} else { //no picture or base64 photo
 		if (imageURI.indexOf('data:image/jpeg;base64') !== -1){
 			params.photo = imageURI;
-			imageURI = "";
+			console.log("Photo!");
 		} else {
-			options.fileKey = "image";
-			options.fileName = "image.jpg";
-			options.mimeType = "image/jpeg";
-			options.chunkedMode = false;			
+			console.log("no image!");
 		}
-	} else {
-		console.log("no image!");
+		
+		//send data
+		$.post(url, params, function() {
+				alert("success");
+			})
+			.done(function() {
+				console.log("POST success!");
+				alert("Meldung erfolgreich!\n");
+				$.mobile.navigate("#index");
+			})
+			.fail(function(xhRequest, ErrorText, thrownError) {
+				switch(xhRequest.status)
+				{
+				case 200:
+					console.log("POST success!");
+					alert("Meldung erfolgreich!\n");
+					$.mobile.navigate("#index");
+					break;
+				default:
+					alert("Fehler! Http Status: " + xhRequest.status);
+					console.log('postSwarm error ' +xhRequest.status+'|'+xhRequest.responseText);
+				}
+			})
+			.always(function() {
+				console.log("POST finished!");
+				$.mobile.hidePageLoadingMsg();
+				$.unblockUI(); 
+			});
 	}
 
-	
-	options.params = params;
-
-	// Transfer picture to server
-	var ft = new FileTransfer();
-	ft.upload(imageURI,
-			url, 
-			function(r){
-				alert("Meldung erfolgreich!\n");
-						//+r.bytesSent+" bytes gesendet.");
-				$.mobile.hidePageLoadingMsg();
-				$.unblockUI();
-				$.mobile.navigate("#index");
-			},
-			function(error) {
-				
-				switch(error.code)
-				{
-//				case 0:
-				case 1: alert("Server oder Netzwerk nicht erreichbar!"); break;
-//				case 2:
-				case 3: alert("Konnte keine Verbindung zu Server aufbauen. Timeout"); break;
-				default: alert("Serverfehler " + error.code + "\n" + error.message);
-				
-				}
-				
-				$.mobile.hidePageLoadingMsg();
-				$.unblockUI();
-			},
-			options);
 
 	console.log("Sent data");
 }

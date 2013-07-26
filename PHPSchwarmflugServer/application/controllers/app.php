@@ -35,6 +35,22 @@ class App extends CI_Controller {
 	}
 	
 	public function newswarm( $args ){
+
+		if( empty($_POST) )
+		{
+			log_message('error', 'No POST data!'.print_r($_POST, true));
+			show_error('No POST data!');
+			return;
+		} elseif( 
+			$this->input->post('lat', TRUE) == '' or
+			$this->input->post('lon', TRUE) == '' or
+			$this->input->post('genus', TRUE) == '' or
+			$this->input->post('date', TRUE) == '')
+		{
+			log_message('error', 'No enough POST param!'.print_r($_POST, true));
+			show_error('No enough POST param!');
+			return;
+		}
 		
 		//upload config
 		$config['upload_path'] = 'uploads/';
@@ -45,13 +61,6 @@ class App extends CI_Controller {
 		$swarm = Array();
 		
 		log_message('info', 'New swarm!');
-		
-		if( empty($_POST) )
-		{
-			log_message('error', 'No POST data!');
-			show_error('No POST data!');
-			return;
-		}
 					
 		if ( $this->upload->do_upload('image') ){
 			$upload = $this->upload->data();
